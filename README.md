@@ -15,7 +15,7 @@ Since this is an early module, it is also designed to tell you how to approach a
 ## Focus
 
 This module is designed as an introduction to Autonomous Systems, how they are used by organizations, and how to use them to understand
-the macroscopy Internet.
+the macroscopic Internet.
 
 ## Background
 
@@ -101,7 +101,7 @@ Replace `(date)` with the actual date in the filenames (e.g., `20260501`).
 ### Step 1 (5pt) — What kinds of values and fields do you expect to find in the dataset?
 
 For each dataset create a table with a row for each column/field name, type, and values description.
-You will create two scripts. One for each dataset that prints out the columns and the values contains in those columns.
+You will create two scripts, one for each dataset, that print out the columns and the values contained in those columns.
 
 - **name**: The name of the field or column (ASN, name, degree)
 - **type**: Int, string, etc
@@ -155,7 +155,7 @@ We want to create a plot for both of these graphs.
 
 ---
 
-#### Step 2.2 - Create a plot for the customer cone distribution
+#### Step 2.1 - Create a plot for the customer cone distribution
 
 Since the customer cone values range is very large, a good place to start is the Empirical Cumulative Distribution Function (eCDF).
 
@@ -171,16 +171,16 @@ What does this tell you about the customer cone distribution? Does it have clean
 
 ---
 
-#### Step 2.3 - Create a bar chart plot of the organization sizes.
+#### Step 2.2 - Create a bar chart plot of the organization sizes.
 
 The range of values is small enough for organization sizes that you can use a bar chart.
 
 - x-axis: organization size
 - y-axis: log number of organizations
 
-What does this tell you about the organization size distribution. Does it have clean lines for small, middle, large?
+What does this tell you about the organization size distribution? Does it have clean lines for small, middle, large?
 
-### Step 3 - Count the number of transit free, transit, and edge ASes.
+### Step 3 (5pts) - Count the number of transit free, transit, and edge ASes.
 
 Another way to classify ASNs is as transit free, transit, or edge. We will do this by looking at the relationships
 in the as-rel.txt file.
@@ -206,7 +206,7 @@ What is a possible explanation?
 
 ### Step 4 (5pts) — Looking through the lens of the customer cone, how are organizations using their ASNs?
 
-##### Step 4.1 How does a organization distribute its customer cone routing across it's ASNs?
+##### Step 4.1 How does an organization distribute its customer cone routing across its ASNs?
 
 Create a table with the top 50 organizations by the number of ASNs, that captures how organizations are using their customer cone.
 
@@ -246,7 +246,8 @@ What do we know from this table about the largest ASNs? What do they have in com
 
 Document your answers in [report.md](./report.md). Fill it in as you work so your final submission includes:
 
-- your Step 1-6 answers,
-- the Gini coefficients you computed, and
-- the required Lorenz curve plots, and
-- your final interpretation of what the Lorenz curves show about Internet inequality.
+- your Step 1–6 answers,
+- the distribution plots from Step 2,
+- the transit classification table from Step 3,
+- the organization and ASN class tables from Steps 4 and 5, and
+- the top-30 ASN summary table from Step 6.

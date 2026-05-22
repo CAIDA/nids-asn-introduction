@@ -1,123 +1,106 @@
-# Report: Internet Inequality and ASN Customer Cones
+# Report: Internet ASN and Customer Cone Analysis
 
 ## Student Information
 
 - Name:
 - Date:
 
-## Research Question
+---
 
-What can the Lorenz curve of a country's customer cone tell about Internet inequality?
+## Step 1 — Dataset fields and values
 
-## Step 1 — What is an ASN, and how does it relate to an organization?
+### Organization dataset (orgs.jsonl)
 
-Write 2-4 sentences explaining what an Autonomous System Number (ASN) is and how it maps to a real organization such as an ISP, cloud provider, university, or company.
+| name | type | values | description |
+| ---- | ---- | ------ | ----------- |
+| score    | int    | ?..????    | sorting by importance |
+| orgId    | string |            | org unique id |
+| orgName  | string |            | organization name |
+| members  | [int]  | size(?..?) | array of ASN members |
 
-Answer:
+**Total organizations**: ??
+**Total ASNs**: ??
 
-## Step 2 — What is the ASN customer cone?
+### AS Relationships dataset (as-rel.txt)
 
-Explain, in your own words:
+| type | count |
+| ---- | ----- |
+| provider-customer | ??? |
+| peer-peer | ??? |
 
-- what a provider-customer relationship means,
-- what a peer-to-peer relationship means, and
-- why customer cones include customer links but not peer links.
+---
 
-Then explain what a large customer cone suggests about an AS's role in Internet routing.
+## Step 2 — Distribution plots
 
-Answer:
+### Step 2.1 — Customer cone distribution (eCCDF)
 
-## Step 3 — Lorenz Curve of World GDP
+(Paste your eCCDF plot here)
 
-Plot:
-
-![World GDP Lorenz curve placeholder](plots/world-gdp-lorenz.png)
-
-_Replace this placeholder path with your saved Step 3 plot if you use a different filename._
-
-Record the Gini coefficient from your GDP Lorenz curve:
-
-- World GDP Gini:
-
-Interpretation:
-
-What does this Lorenz curve show about how evenly or unevenly GDP is distributed across countries?
+What does this tell you about the customer cone distribution? Does it have clean lines for small, middle, and large sizes?
 
 Answer:
 
-## Step 4 — Lorenz Curve of US-Headquartered ASNs
+### Step 2.2 — Organization size distribution (bar chart)
 
-Plot:
+(Paste your bar chart here)
 
-![US headquartered ASN Lorenz curve placeholder](plots/us-asns-lorenz.png)
-
-_Replace this placeholder path with your saved Step 4 plot if you use a different filename._
-
-Record the Gini coefficient from the US ASN Lorenz curve:
-
-- US headquartered ASN Gini:
-
-Question:
-
-How concentrated is routing power among US-headquartered ASNs? Compare this Gini coefficient to the GDP Gini from Step 3. Is Internet routing more or less concentrated than economic output across countries? What does this imply about how many organizations control the majority of US Internet transit?
+What does this tell you about the organization size distribution? Does it have clean lines for small, middle, and large sizes?
 
 Answer:
 
-## Step 5 — Lorenz Curve of the US Customer Cone
+---
 
-Plot:
+## Step 3 — Transit-free, transit, and edge ASe counts
 
-![US headquartered vs customer cone Lorenz curve placeholder](plots/us-cone-comparison-lorenz.png)
+| type         | total | customer cone range |
+| ------------ | ----- | ------------------- |
+| transit free | ??    | ??..??              |
+| transit      | ??    | ??..??              |
+| edge         | ??    | ??..??              |
+| unseen       | ??    | -                   |
 
-_Replace this placeholder path with your saved Step 5 plot if you use a different filename._
-
-Record the values you computed while building the US customer cone:
-
-- Top 10 US ASNs by `cone_asns`:
-- Upper bound from summing all US `cone_asns`:
-- Actual US customer cone size from ppdc union:
-- US customer cone Gini:
-
-Question:
-
-How do the two Gini coefficients compare? Is routing power more or less concentrated in the aggregate customer cone compared to just the US-headquartered ASNs? What does this tell you about the structure of networks downstream of US providers?
+What is the relationship between these three classes and customer cone sizes? What is a possible explanation?
 
 Answer:
 
-## Step 6 — US vs China
+---
 
-Plot:
+## Step 4 — How organizations distribute their customer cone across ASNs
 
-![US vs China Lorenz curve placeholder](plots/us-vs-cn-lorenz.png)
+Top 50 organizations by number of ASNs:
 
-_Replace this placeholder path with your saved Step 6 plot if you use a different filename._
+| organization | total ASNs | 100% cone | 99-75% cone | 74-50% cone | 49-25% cone | 25-1% cone | 0% cone |
+| ------------ | ---------- | --------- | ----------- | ----------- | ----------- | ---------- | ------- |
+|              |            |           |             |             |             |            |         |
 
-Record the Gini coefficients for all groups:
+Describe your three ASN classes based on the patterns you observe above:
 
-| Group                 | Gini coefficient |
-| --------------------- | ---------------- |
-| World GDP (Step 3)    |                  |
-| US headquartered ASNs |                  |
-| US customer cone      |                  |
-| CN headquartered ASNs |                  |
-| CN customer cone      |                  |
+| class name | definition |
+| ---------- | ---------- |
+|            |            |
+|            |            |
+|            |            |
 
-Question:
+---
 
-Which country's Internet infrastructure is more concentrated? A higher Gini coefficient means a country's routing power is held by fewer ASNs. What does this imply about resilience and dependence on a small number of providers? How does Internet routing inequality in each country compare to the global economic inequality baseline from Step 3?
+## Step 5 — ASN class counts
+
+| group name | total ASNs (percentage) | description |
+| ---------- | ----------------------- | ----------- |
+|            |                         |             |
+
+What does this tell you about how organizations are using their ASNs?
 
 Answer:
 
-## Final Conclusion
+---
 
-Return to the main research question:
+## Step 6 — Top 30 ASNs summary
 
-What can the Lorenz curve of a country's customer cone tell about Internet inequality?
+| name | country | customer cone size | type of transit (step 3) | percentage of all ASNs | ASN class (step 4) |
+| ---- | ------- | ------------------ | ------------------------ | ---------------------- | ------------------ |
+|      |         |                    |                          |                        |                    |
 
-Complete the statements below.
+What do we know from this table about the largest ASNs? What do they have in common and what is different?
 
-- The Lorenz curve of a country's customer cone reveals:
-- Comparing the US and China:
-- Compared to world GDP inequality, Internet routing inequality is:
-
-Final interpretation:
+Answer:
