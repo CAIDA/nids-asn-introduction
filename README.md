@@ -1,48 +1,59 @@
 # nids-asn-cone
 
-This module guides you through an empirical investigation into Internet inequality. You will download real-world Internet and economic data, apply the Lorenz curve to measure concentration, and form a data-backed conclusion about how evenly Internet infrastructure is distributed.
+This module will introduce you to the Internet's Autonomous System using real world Internet data.
+Since this is an early module, it is also designed to tell you how to approach a new dataset.
 
 **How to use this module:**
 
-1. Read the **Question** — this frames the rest of the module.
+1. Read the **Focus** — this frames the rest of the module.
 2. Read the **Background** for required context.
 3. Check **Resources** — verify you can access all data sources before you begin.
 4. Follow **Setup** to install dependencies and download the data.
 5. Work through the **Analysis** steps in order — each one introduces its concept and dataset.
-6. Fill in the **Answer** section with your findings.
+6. Create `report.md` and fill it in with your findings as you complete the steps. A starter template is included in this repository.
 
-## Question
+## Focus
 
-What can the Lorenz curve of a country's customer cone tell about Internet inequality?
+This module is designed as an introduction to Autonomous Systems, how they are used by organizations, and how to use them to understand
+the macroscopy Internet.
 
 ## Background
 
 - **Reading Required**:
-  - [Lorenz curve](https://en.wikipedia.org/wiki/Lorenz_curve) (Wikipedia)
   - [Autonomous system (Internet)](<https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>) (Wikipedia)
   - [Lecture: AS Relationships and Customer Cones](https://cseweb.ucsd.edu/classes/wi23/cse291-e/slides/cse291e-lecture-03.pdf) (slides)
+  - [Empirical Distribution Function](https://en.wikipedia.org/wiki/Empirical_distribution_function) (wiki)
 - **Reading Optional**:
   - [Autonomous Systems Topology](https://www.caida.org/catalog/media/2016_as_intro_topology_wind/as_intro_topology_wind.pdf) (slides)
+
+#### Autonomous Systems
+
+An **Autonomous System (AS)** is an independently operated network on the Internet — a collection of IP prefixes managed by a single administrative entity under a common routing policy. Each AS is identified by a globally unique **Autonomous System Number (ASN)**. ASNs are the unit of routing on the Internet: networks exchange reachability information at the AS level using the **Border Gateway Protocol (BGP)**.
+
+An ASN is assigned to a network, not directly to a legal entity. One organization may operate multiple ASNs (for example, to represent different geographic regions or service tiers), and in rare cases an ASN may be shared between affiliated entities.
+
+Organizations own multiple ASNs, for purposes of this assignment we will call this the organization's size.
+
+#### Customer Cone
+
+The customer cone is a metric used to gauge the size and influence of an AS within the global routing system. It represents the complete set of ASes, IPv4 prefixes, or IPv4 addresses that can be reached from a given AS by following only provider-to-customer links.
+
+Simply put, an AS's customer cone includes the AS itself, its direct customers, its customers' customers, and so on—effectively capturing all networks that rely on it and pay it, directly or indirectly, for Internet transit.
 
 ## Resources
 
 Verify you can access each resource before beginning the module.
 
-**CAIDA AS Rank** — A global ranking of Autonomous Systems (networks) by the size of their customer cone. Provides per-ASN data including cone sizes and country of registration. Use `scripts/asrank-download.py` to download the full dataset locally.
+**AS Organization** - Provides a list of organizations and the ASNs they have registered in the Internet Registries.
 
-- API: `https://api.asrank.caida.org/v2/restful/doc`
-- Recipe: [How to use AS Rank to classify ASNs](https://catalog.caida.org/recipe/how_to_use_as_rank_to_classify_asns)
+- API: `https://api.data.caida.org/as2org/v1/orgs/`
+- script: scripts/orgs-download.py
 
-**World Bank GDP** — Country-level GDP (current USD) published by the World Bank. Use `scripts/world-bank-download.py` to download.
+**CAIDA AS Relationships (Serial-1)** — AS Relationship and Customer Cone inferred dataset
 
-- API: `https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD`
-
-**CAIDA AS Relationships (Serial-1)** — Per-AS provider-peer-customer (PPDC) cones: for each AS, the set of all ASes reachable via customer links. Download `(date).ppdc-ases.txt.bz2` to the `data/` directory.
-
-- Dataset: `https://catalog.caida.org/dataset/as_relationships_serial_1`
-
-File format — each line: `<cone-as> <customer-1-as> <customer-2-as> … <customer-N-as>`
-Example: `12 12 3 4` means AS 12's customer cone contains AS 12, 3, and 4.
+- WEB: `https://catalog.caida.org/dataset/as_relationships_serial_1`
+  - `(date).ppdc-ases.txt.bz2` : Per-AS provider-peer-customer (PPDC) cones: for each AS, the set of all ASes reachable via customer links.
+  - `(date).as-rel.txt.bz2` : AS Relationships between two ASNs
 
 ## Setup
 
@@ -65,204 +76,177 @@ This creates a virtual environment and installs `requests`, `matplotlib`, and `n
 ### Download the data
 
 ```bash
-# Full AS Rank dataset (~120k ASNs, may take a few minutes)
-uv run scripts/asrank-download.py --output data/asns.csv
-
-# World Bank GDP (all countries, most recent year)
-uv run scripts/world-bank-download.py --output data/gdp.csv
+# Download the AS 2 Org information
+uv run scripts/orgs-download.py --url https://api.data.caida.org/as2org/v1/orgs/ --output data/orgs.jsonl
 ```
 
-To download a small sample for testing:
+Manually download the two latest files from https://catalog.caida.org/dataset/as_relationships_serial_1 and decompress them:
 
 ```bash
-uv run scripts/asrank-download.py --output data/asns_sample.csv --limit 500
+# Customer cone data
+bunzip2 data/(date).ppdc-ases.txt.bz2
+mv data/(date).ppdc-ases data/as-cone.txt
+
+# AS relationship data
+bunzip2 data/(date).as-rel.txt.bz2
+mv data/(date).as-rel data/as-rel.txt
 ```
+
+Replace `(date)` with the actual date in the filenames (e.g., `20260501`).
 
 ## Analysis
 
 ---
 
-### Step 1 (1pt) — What is an ASN, and how does it relate to an organization?
+### Step 1 (5pt) — What kinds of values and fields do you expect to find in the dataset?
 
-An **Autonomous System (AS)** is an independently operated network on the Internet — a collection of IP prefixes managed by a single administrative entity under a common routing policy. Each AS is identified by a globally unique **Autonomous System Number (ASN)**. ASNs are the unit of routing on the Internet: networks exchange reachability information at the AS level using the **Border Gateway Protocol (BGP)**.
+For each dataset create a table with a row for each column/field name, type, and values description.
+You will create two scripts. One for each dataset that prints out the columns and the values contains in those columns.
 
-An ASN is assigned to a network, not directly to a legal entity. One organization may operate multiple ASNs (for example, to represent different geographic regions or service tiers), and in rare cases an ASN may be shared between affiliated entities.
+- **name**: The name of the field or column (ASN, name, degree)
+- **type**: Int, string, etc
+- **values**: This will depend on what kind of values you find
+  - If it's number what is the min and max?
+  - Is it a small number of enumerated strings, can you list them?
+  - Is it a large number of enumerated strings, are some more common than others?
+  - Is it best described with a short description?
 
-The **CAIDA AS Rank** dataset, downloaded as `data/asns.csv`, describes every publicly visible ASN. Key columns:
+**Organization Table Starter**
 
-| Column           | What it represents |
-| ---------------- | ------------------ |
-| `asn`            |                    |
-| `name`           |                    |
-| `rank`           |                    |
-| `country_iso`    |                    |
-| `cone_addresses` |                    |
+| name     | type   | values     | description           |
+| -------- | ------ | ---------- | --------------------- |
+| score    | int    | ?..????    | sorting by importance |
+| orgId    | string |            | org unique id         |
+| orgName  | string |            | organization name     |
+| members  | [int]  | size(?..?) | array of ASN members  |
 
-Load `data/asns.csv` and print the row for a well-known ASN — try **AS13335** (Cloudflare), **AS3356** (Level3/Lumen), and **AS7922** (Comcast). Fill in the table above.
+**total organizations**: ??
+**total ASNs**: ??
 
-**Question**: For the three ASNs you looked up, do they all belong to different organizations? Can you find any example in the dataset where one organization appears to operate more than one ASN?
+**AS Relationships Table Starter**
+| type | number |
+| provider-customer | ??? |
+| peer-peer | ??? |
 
----
+Suggestion for handling the JSONL file:
 
-### Step 2 (5pts) — What is the ASN customer cone?
+- Start with the first few objects in the orgs.jsonl file. Copy/paste them into a JSON pretty print to get their fields and values.
+  - Populate the table with what you see.
+  - Write a script that parses based on those objects and sorts and counts the values in each field. - This script should print out objects that don't parse correctly, don't have all the keys, or are unusual. - Update the script until it can handle all the objects. - Print out the table.
+    For the CSV file, it's basically the same, but you don't have to worry about changing fields
+  - Create the script with what you expect to find, then have it print out rows that don't match that expectation
+  - Loop over the script until it handles every row.
+  - Print out the table.
 
-In BGP, networks form **provider–customer** relationships: a customer AS pays a provider AS to carry traffic to the rest of the Internet. This hierarchy is recursive — a customer may itself have customers. An alternative relationship is **peer-to-peer**, where two ASNs exchange traffic between their respective customers without providing upstream transit to one another.
-
-The **customer cone** of an ASN is the set of all ASNs reachable from it following only customer links — its customers, their customers, and so on. Peer-to-peer links are not included in the cone because they do not create a transit dependency. A large customer cone means many networks depend on that AS for transit. The customer cone is the primary measure of an AS's influence in the routing hierarchy.
-
-The dataset includes three cone columns:
-
-| Column           | What it represents                                  |
-| ---------------- | --------------------------------------------------- |
-| `cone_asns`      | Number of ASNs in the customer cone                 |
-| `cone_prefixes`  | Number of IP prefixes announced within the cone     |
-| `cone_addresses` | Number of IP addresses covered by the cone prefixes |
-
-Using `data/asns.csv`, find the top 10 ASNs by `cone_asns`. Produce a summary table:
-
-| Rank | ASN | Name | Country | Cone ASNs | Cone Addresses |
-| ---- | --- | ---- | ------- | --------- | -------------- |
-| 1    |     |      |         |           |                |
-| ...  |     |      |         |           |                |
-
-**Question**: What does a large customer cone imply about an ASN's role in the Internet? Why might `cone_addresses` be a more informative measure than `cone_asns` when comparing routing power across different networks?
+When you are writing this script, make sure it checks your expectation and let you know when values don't agree.
+If you think org.jsonl's score always goes down by one, your code needs to check this and report when it doesn't.
 
 ---
 
-### Step 3 (5pts) — What is the Lorenz curve? (GDP baseline)
+### Step 2 (1pt) — Understand the distribution of organization member and customer cone size.
 
-The **Lorenz curve** visualizes the inequality of a distribution. Sort all units (countries, ASNs, etc.) from smallest to largest by their share of some resource. Then plot:
+We want to create a plot for both of these graphs.
 
-- **x-axis**: cumulative fraction of units (0 = none, 1 = all)
-- **y-axis**: cumulative fraction of total resource held by those units
-
-A perfectly equal distribution produces a diagonal line (y = x). Any real distribution curves below it — the further below, the more unequal. The **Gini coefficient** summarizes this in a single number: 0 = perfect equality, 1 = one unit holds everything.
-
-We start with **world GDP** — a familiar economic distribution — to build intuition before applying the same tool to Internet data.
-
-Using `data/gdp.csv` (columns: `country_code`, `country_name`, `year`, `gdp_usd`):
-
-1. Run the plotting script to generate the Lorenz curve:
-
-```bash
-uv run scripts/lorenz-plot.py data/gdp.csv \
-    --value gdp_usd \
-    --label "World GDP" \
-    --title "Lorenz Curve: World GDP"
-```
-
-The script prints the Gini coefficient and displays the plot.
-
-2. Inspect the plot. What fraction of global GDP do the richest 10% of countries hold? (Read from the chart: at x = 0.90, what is y? The richest 10% hold `1 - y` of total GDP.)
-
-**Question**: What is the Gini coefficient for world GDP? What does the shape of the curve tell you about how evenly economic output is distributed across countries? Keep this Gini value — you will compare it to Internet routing inequality in later steps.
+| type    | x-axis | y-axis                            |
+| ------- | ------ | --------------------------------- |
+| eCDF    | value  | number of values equal or less    |
+| eCCDF   | value  | number of values equal or greater |
+| density | value  | number of values equal            |
 
 ---
 
-### Step 4 (5pts) — What is the Lorenz curve of a country's ASNs?
+#### Step 2.2 - Create a plot for the customer cone distribution
 
-Now apply the same analysis to Internet routing. For a given country, each headquartered ASN controls a certain amount of IP address space through its customer cone (`cone_addresses`). We can ask: is routing power spread evenly across a country's ASNs, or concentrated in a few?
+Since the customer cone values range is very large, a good place to start is the Empirical Cumulative Distribution Function (eCDF).
 
-Using `data/asns.csv`:
+(eCDF of the customer cone goes here)
 
-1. Filter rows to ASNs headquartered in the **United States** (`country_iso == "US"`).
-2. Drop rows where `cone_addresses` is missing or zero.
-3. Save the filtered data to `data/asns_us.csv`.
-4. Plot the Lorenz curve:
+As you can see, the density at the front makes it hard to read. So let's change it to be an Empirical Complementary Cumulative Distribution Function (eCCDF).
+This will have the values drop down to smaller numbers for the larger customer cone sizes. Let's also make the x and y axes logarithmic, so we can keep the large values, but still see small value changes.
 
-```bash
-uv run scripts/lorenz-plot.py data/asns_us.csv \
-    --value cone_addresses \
-    --label "US ASNs (headquartered)" \
-    --title "Lorenz Curve: US ASN Routing Power"
-```
+- x-axis: log customer cone size
+- y-axis: log number of ASNs with a customer cone size equal to or greater
 
-Record the Gini coefficient printed by the script.
-
-**Question**: How concentrated is routing power among US-headquartered ASNs? Compare this Gini coefficient to the GDP Gini from Step 3 — is Internet routing more or less concentrated than economic output across countries? What does this imply about how many organizations control the majority of US Internet transit?
-
-_Save `data/asns_us.csv` — you will use it in Step 5._
+What does this tell you about the customer cone distribution? Does it have clean lines for small, middle, large?
 
 ---
 
-### Step 5 (5pts) — What is a country's customer cone?
+#### Step 2.3 - Create a bar chart plot of the organization sizes.
 
-A single country's ASNs do not act in isolation — through their customer relationships they collectively reach a much broader set of networks worldwide. The **country's customer cone** is the union of all customer cones of all ASNs headquartered in that country: every ASN reachable from any country-X ASN through customer links.
+The range of values is small enough for organization sizes that you can use a bar chart.
 
-Using `data/asns.csv`:
+- x-axis: organization size
+- y-axis: log number of organizations
 
-1. Find the **top 10 US ASNs** by `cone_asns` (these cover the vast majority of the US customer cone).
-2. For each of these 10 ASNs, note their `cone_asns` and `cone_addresses`.
-3. Compute an **upper bound** on the US customer cone size: sum the `cone_asns` values for all US ASNs. Compare this to the cone of the single largest US ASN — what does the gap tell you about overlap?
+What does this tell you about the organization size distribution. Does it have clean lines for small, middle, large?
 
-Now compute the **actual US customer cone** using the ppdc-ases data. The true country cone is the union of every US ASN's individual customer cone:
+### Step 3 - Count the number of transit free, transit, and edge ASes.
 
-1. Load `data/<date>.ppdc-ases.txt.bz2` — each line lists a cone AS followed by all ASes in its cone.
-2. For each US ASN in `data/asns_us.csv`, look up its row in the ppdc-ases data and collect all ASNs listed in its cone.
-3. Take the **union** of all collected sets — this is the US customer cone.
-4. Look up each ASN in the union in `data/asns.csv` to retrieve `cone_addresses`; drop any not found or with zero addresses.
-5. Save to `data/cone_us.csv`.
-6. Plot both curves on one chart:
+Another way to classify ASNs is as transit free, transit, or edge. We will do this by looking at the relationships
+in the as-rel.txt file.
 
-```bash
-uv run scripts/lorenz-plot.py data/asns_us.csv data/cone_us.csv \
-    --value cone_addresses \
-    --labels "US headquartered" "US customer cone (approx.)" \
-    --title "Lorenz Curve: US ASNs vs US Customer Cone"
-```
+- **transit free**: Will have no providers in the as-rel.txt file
+- **transit**: will have at least one customer and one provider
+- **edge**: has one provider and no customers
+- **unseen**: is found in the orgs file, but not in the as-rel file (not seen in BGP)
 
-**Question**: How do the two Gini coefficients compare? Is routing power more or less concentrated in the aggregate customer cone compared to just the US-headquartered ASNs? What does this tell you about the structure of networks downstream of US providers?
+We will do this by building a table counting the number and some properties of each of these types of ASes.
 
----
+| type         | total | customer cone range |
+| ------------ | ----- | ------------------- |
+| transit free | ??    | ??..??              |
+| transit      | ??    | ??..??              |
+| edge         | ??    | ??..??              |
+| unseen       | ??    | -                   |
 
-### Step 6 (5pts) — US vs China: what does the Lorenz curve reveal about Internet inequality?
-
-Repeat Steps 4–5 for **China** (`country_iso == "CN"`), producing `data/asns_cn.csv` and `data/cone_cn.csv`.
-
-Then create a four-line comparison chart:
-
-```bash
-uv run scripts/lorenz-plot.py \
-    data/asns_us.csv data/cone_us.csv \
-    data/asns_cn.csv data/cone_cn.csv \
-    --value cone_addresses \
-    --labels "US headquartered" "US customer cone" \
-             "CN headquartered" "CN customer cone" \
-    --title "Lorenz Curve: US vs China Internet Inequality"
-```
-
-Collect all Gini coefficients:
-
-| Group                 | Gini coefficient |
-| --------------------- | ---------------- |
-| World GDP (Step 3)    |                  |
-| US headquartered ASNs |                  |
-| US customer cone      |                  |
-| CN headquartered ASNs |                  |
-| CN customer cone      |                  |
-
-**Question**: Which country's Internet infrastructure is more concentrated? A higher Gini coefficient means a country's routing power is held by fewer ASNs — what does this imply about resilience and dependence on a small number of providers? How does Internet routing inequality in each country compare to the global economic inequality baseline from Step 3?
+What is the relationship between these three classes and customer cone sizes?
+What is a possible explanation?
 
 ---
 
-## Answer
+### Step 4 (5pts) — Looking through the lens of the customer cone, how are organizations using their ASNs?
 
-_(Complete this section after finishing the analysis above.)_
+##### Step 4.1 How does a organization distribute its customer cone routing across it's ASNs?
 
-What can the Lorenz curve of a country's customer cone tell about Internet inequality?
+Create a table with the top 50 organizations by the number of ASNs, that captures how organizations are using their customer cone.
 
-| Group            | Gini |
-| ---------------- | ---- |
-| World GDP        |      |
-| US ASNs          |      |
-| US customer cone |      |
-| CN ASNs          |      |
-| CN customer cone |      |
+For each, the last cells give the number of ASNs with that given percentage of the organization's largest customer cone size.
 
-The Lorenz curve of a country's customer cone reveals \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.
+| organization | total ASNs | 100% cone | 99-75% cone | 74-50% cone | 49-25% cone | 25-1% cone | 0% cone |
+| ------------ | ---------- | --------- | ----------- | ----------- | ----------- | ---------- | ------- |
+|              |            |           |             |             |             |            |         |
 
-Comparing US and China: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.
+Define three classes of ASNs based on how they distribute their customer cone among their ASNs.
 
-Compared to world GDP inequality (Gini = \_\_\_\_), Internet routing inequality is \_\_\_\_\_\_\_\_.
+### Step 5 (5pts) — Count the number of ASes in each class
 
-[Your interpretation here.]
+Divide all the ASNs into your classes, count how many are in each class, and give a description of your classification.
+
+| group name | total ASNs (percentage) | description |
+| ---------- | ----------------------- | ----------- |
+|            |                         |             |
+
+What does this tell you about how organizations are using their ASNs?
+
+---
+
+### Step 6 - Answer these questions based on the plots and tables from earlier steps.
+
+Fill in the table for the largest 30 ASNs.
+
+| name | country | customer cone size | type of transit (step 3) | percentage of all ASNs | ASN class (step 4) |
+| ---- | ------- | ------------------ | ------------------------ | ---------------------- | ------------------ |
+|      |         |                    |                          |                        |                    |
+
+What do we know from this table about the largest ASNs? What do they have in common and what is different?
+
+---
+
+## Report
+
+Document your answers in [report.md](./report.md). Fill it in as you work so your final submission includes:
+
+- your Step 1-6 answers,
+- the Gini coefficients you computed, and
+- the required Lorenz curve plots, and
+- your final interpretation of what the Lorenz curves show about Internet inequality.
