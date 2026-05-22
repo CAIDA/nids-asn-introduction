@@ -1,7 +1,7 @@
 # nids-asn-cone
 
 This module will introduce you to the Internet's Autonomous System using real world Internet data.
-Since this is an early module, it is also designed to tell you how to approach a new dataset.
+Since this is an early module, it is also designed to teach you how to approach a new dataset.
 
 **How to use this module:**
 
@@ -10,25 +10,28 @@ Since this is an early module, it is also designed to tell you how to approach a
 3. Check **Resources** — verify you can access all data sources before you begin.
 4. Follow **Setup** to install dependencies and download the data.
 5. Work through the **Analysis** steps in order — each one introduces its concept and dataset.
-6. Create `report.md` and fill it in with your findings as you complete the steps. A starter template is included in this repository.
+6. Fill in `report.md` with your findings as you complete the steps. A starter template is included in this repository.
 
 ## Focus
 
-This module is designed as an introduction to Autonomous Systems, how they are used by organizations, and how to use them to understand
-the macroscopic Internet.
+What are the largest Organizations on the Internet? How could this be decided? What can we know about them from the datasets found in this module?
 
 ## Background
 
 - **Reading Required**:
   - [Autonomous system (Internet)](<https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>) (Wikipedia)
   - [Lecture: AS Relationships and Customer Cones](https://cseweb.ucsd.edu/classes/wi23/cse291-e/slides/cse291e-lecture-03.pdf) (slides)
-  - [Empirical Distribution Function](https://en.wikipedia.org/wiki/Empirical_distribution_function) (wiki)
+  - [Empirical Distribution Function](https://en.wikipedia.org/wiki/Empirical_distribution_function) (Wikipedia)
 - **Reading Optional**:
+  - [On the Importance of Being an AS: An Approach to Country-Level AS Rankings](https://catalog.caida.org/paper/2023_on_importance_being_as) (paper)
   - [Autonomous Systems Topology](https://www.caida.org/catalog/media/2016_as_intro_topology_wind/as_intro_topology_wind.pdf) (slides)
 
 #### Autonomous Systems
 
-An **Autonomous System (AS)** is an independently operated network on the Internet — a collection of IP prefixes managed by a single administrative entity under a common routing policy. Each AS is identified by a globally unique **Autonomous System Number (ASN)**. ASNs are the unit of routing on the Internet: networks exchange reachability information at the AS level using the **Border Gateway Protocol (BGP)**.
+There are many [different ways to judge an organization's important or size](https://catalog.caida.org/paper/2023_on_importance_being_as).
+In this module, we will be using an organization's visibility in **Border Gateway Protocol (BGP)** routing. BGP is the standardized exterior gateway protocol designed to exchange routing and reachability information among **autonomous systems (AS)** on the Internet, determining the most efficient paths for data to travel.
+
+An AS is an independently operated network on the Internet — a collection of IP prefixes managed by a single administrative entity under a common routing policy. Each AS is identified by a globally unique **Autonomous System Number (ASN)**.
 
 An ASN is assigned to a network, not directly to a legal entity. One organization may operate multiple ASNs (for example, to represent different geographic regions or service tiers), and in rare cases an ASN may be shared between affiliated entities.
 
@@ -57,7 +60,7 @@ Verify you can access each resource before beginning the module.
 
 ## Setup
 
-### Install uv
+### Install the Python manager uv
 
 If you don't have uv installed:
 
@@ -113,33 +116,41 @@ You will create two scripts, one for each dataset, that print out the columns an
 
 **Organization Table Starter**
 
-| name     | type   | values     | description           |
-| -------- | ------ | ---------- | --------------------- |
-| score    | int    | ?..????    | sorting by importance |
-| orgId    | string |            | org unique id         |
-| orgName  | string |            | organization name     |
-| members  | [int]  | size(?..?) | array of ASN members  |
+| name    | type     | values                    | description                                                                    |
+| ------- | -------- | ------------------------- | ------------------------------------------------------------------------------ |
+| score   | int      | (minimum)..(maximum)      | What could this represent? What does it tell you about how the data is sorted? |
+| orgId   | string   |                           | org unique id                                                                  |
+| orgName | string   |                           | organization name                                                              |
+| members | [string] | size (minimum)..(maximum) | array of ASN members                                                           |
+
+The table above is intentionally incomplete — your script should discover and document all fields in the dataset.
 
 **total organizations**: ??
 **total ASNs**: ??
 
 **AS Relationships Table Starter**
-| type | number |
-| provider-customer | ??? |
-| peer-peer | ??? |
+
+| type              | count |
+| ----------------- | ----- |
+| provider-customer | ???   |
+| peer-peer         | ???   |
+
+For the flat text files (as-cone.txt and as-rel.txt), start by reading the comment lines at the top of each file (lines beginning with `#`) — they describe the file's structure and how it was generated. The upstream CAIDA README at https://publicdata.caida.org/datasets/as-relationships/serial-1/README.txt is also a useful reference.
 
 Suggestion for handling the JSONL file:
 
 - Start with the first few objects in the orgs.jsonl file. Copy/paste them into a JSON pretty print to get their fields and values.
   - Populate the table with what you see.
   - Write a script that parses based on those objects and sorts and counts the values in each field. - This script should print out objects that don't parse correctly, don't have all the keys, or are unusual. - Update the script until it can handle all the objects. - Print out the table.
-    For the CSV file, it's basically the same, but you don't have to worry about changing fields
+    For the flat text files, the approach is the same, but the fields are fixed per line so you don't need to handle varying keys.
   - Create the script with what you expect to find, then have it print out rows that don't match that expectation
   - Loop over the script until it handles every row.
   - Print out the table.
 
 When you are writing this script, make sure it checks your expectation and let you know when values don't agree.
 If you think org.jsonl's score always goes down by one, your code needs to check this and report when it doesn't.
+
+**Connecting the datasets**: Look at the fields across all three datasets. Which values appear in more than one dataset? How could you use those shared values to combine information across datasets?
 
 ---
 
@@ -157,12 +168,11 @@ We want to create a plot for both of these graphs.
 
 #### Step 2.1 - Create a plot for the customer cone distribution
 
-Since the customer cone values range is very large, a good place to start is the Empirical Cumulative Distribution Function (eCDF).
+Since the customer cone values range is very large, a good place to start is the Empirical Cumulative Distribution Function (eCDF). Create it and include it in your report.
 
 (eCDF of the customer cone goes here)
 
-As you can see, the density at the front makes it hard to read. So let's change it to be an Empirical Complementary Cumulative Distribution Function (eCCDF).
-This will have the values drop down to smaller numbers for the larger customer cone sizes. Let's also make the x and y axes logarithmic, so we can keep the large values, but still see small value changes.
+Notice the density near the low end makes it hard to read the distribution clearly. To address this, switch to an Empirical Complementary Cumulative Distribution Function (eCCDF) — this inverts the y-axis so larger customer cone sizes drop toward smaller values, making the tail easier to read. Also make both axes logarithmic so large values don't dominate and small differences remain visible.
 
 - x-axis: log customer cone size
 - y-axis: log number of ASNs with a customer cone size equal to or greater
@@ -187,7 +197,7 @@ in the as-rel.txt file.
 
 - **transit free**: Will have no providers in the as-rel.txt file
 - **transit**: will have at least one customer and one provider
-- **edge**: has one provider and no customers
+- **edge**: has at least one provider and no customers
 - **unseen**: is found in the orgs file, but not in the as-rel file (not seen in BGP)
 
 We will do this by building a table counting the number and some properties of each of these types of ASes.
@@ -210,7 +220,7 @@ What is a possible explanation?
 
 Create a table with the top 50 organizations by the number of ASNs, that captures how organizations are using their customer cone.
 
-For each, the last cells give the number of ASNs with that given percentage of the organization's largest customer cone size.
+For each organization, find the largest customer cone size among all its ASNs. The percentage columns show how many of that organization's ASNs have a cone size within that percentage range of its largest cone. For example, "100% cone" counts ASNs whose cone equals the org's max; "0% cone" counts ASNs with no cone at all.
 
 | organization | total ASNs | 100% cone | 99-75% cone | 74-50% cone | 49-25% cone | 25-1% cone | 0% cone |
 | ------------ | ---------- | --------- | ----------- | ----------- | ----------- | ---------- | ------- |
@@ -234,9 +244,9 @@ What does this tell you about how organizations are using their ASNs?
 
 Fill in the table for the largest 30 ASNs.
 
-| name | country | customer cone size | type of transit (step 3) | percentage of all ASNs | ASN class (step 4) |
-| ---- | ------- | ------------------ | ------------------------ | ---------------------- | ------------------ |
-|      |         |                    |                          |                        |                    |
+| name | country | customer cone size | type of transit (step 3) | % of all visible ASNs in cone | ASN class (step 4) |
+| ---- | ------- | ------------------ | ------------------------ | ----------------------------- | ------------------ |
+|      |         |                    |                          |                               |                    |
 
 What do we know from this table about the largest ASNs? What do they have in common and what is different?
 
