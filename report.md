@@ -11,28 +11,37 @@
 
 ### Organization dataset (orgs.jsonl)
 
-| name    | type     | values                    | description |
-| ------- | -------- | ------------------------- | ----------- |
-| score   | int      | (minimum)..(maximum)      | What could this represent? What does it tell you about how the data is sorted? |
-| orgId   | string   |                           | org unique id |
-| orgName | string   |                           | organization name |
-| members | [string] | size (minimum)..(maximum) | array of ASN members |
+`scripts/org-table-fields.py`
 
-The table above is intentionally incomplete — your script should discover and document all fields in the dataset.
+| name    | type | values | description |
+| ------- | ---- | ------ | ----------- |
+| score   |      |        |             |
+| orgId   |      |        |             |
+| orgName |      |        |             |
+| members |      |        |             |
 
-**Total organizations**: ??
-**Total ASNs**: ??
+The table above is a starter — your script should discover and document all fields.
+
+- **total organizations**:
+- **total ASNs**:
 
 ### AS Relationships dataset (as-rel.txt)
 
-| type | count |
-| ---- | ----- |
-| provider-customer | ??? |
-| peer-peer | ??? |
+`scripts/asn-rel-table-fields.py`
+
+| type              | count |
+| ----------------- | ----- |
+| provider-customer |       |
+| peer-peer         |       |
+| total             |       |
+
+**clique ASNs**:
+
+**IXP ASNs**:
 
 **Connecting the datasets**: Which values appear in more than one dataset? How could you use those shared values to combine information across datasets?
 
-Answer:
+(your answer here)
 
 ---
 
@@ -42,81 +51,114 @@ Answer:
 
 #### eCDF
 
-(Paste your eCDF plot here)
+`scripts/customer-cone-ecdf.py`
 
-What do you observe? What makes it hard to read?
+![Customer Cone eCDF](figures/customer-cone-ecdf.png)
 
-Answer:
+**Question 2.1**: What do you observe? What makes it hard to read?
+
+(your answer here)
 
 #### eCCDF
 
-(Paste your eCCDF plot here)
+`scripts/customer-cone-eccdf.py`
 
-What does this tell you about the customer cone distribution? Does it have clean lines for small, middle, and large sizes?
+![Customer Cone eCCDF](figures/customer-cone-eccdf.png)
 
-Answer:
+| type   | range | number of ASNs |
+| ------ | ----- | -------------- |
+| one    |       |                |
+| small  |       |                |
+| middle |       |                |
+| large  |       |                |
 
-### Step 2.2 — Organization size distribution (bar chart)
+**Question 2.1.2**: What does this tell you about the customer cone distribution?
 
-(Paste your bar chart here)
+(your answer here)
 
-What does this tell you about the organization size distribution? Does it have clean lines for small, middle, and large sizes?
+### Step 2.2 — Organization size distribution
 
-Answer:
+`scripts/org-size-ecdf.py`
+
+![Organization size](figures/org-size-ecdf.png)
+
+| type   | range | number of organizations |
+| ------ | ----- | ----------------------- |
+| one    |       |                         |
+| small  |       |                         |
+| middle |       |                         |
+| large  |       |                         |
+
+**Question 2.2**: What does this tell you about the organization size distribution? How does it compare to the customer cone distribution?
+
+(your answer here)
 
 ---
 
-## Step 3 — Transit-free, transit, and edge ASe counts
+## Step 3 — Transit-free, transit, and edge ASN counts
 
-| type         | total | customer cone range |
-| ------------ | ----- | ------------------- |
-| transit free | ??    | ??..??              |
-| transit      | ??    | ??..??              |
-| edge         | ??    | ??..??              |
-| unseen       | ??    | -                   |
+`scripts/asn-transit-table.py`
 
-What is the relationship between these three classes and customer cone sizes? What is a possible explanation?
+| type         | total | customer cone range | one | small | middle | large |
+| ------------ | ----- | ------------------- | --- | ----- | ------ | ----- |
+| transit free |       |                     |     |       |        |       |
+| transit      |       |                     |     |       |        |       |
+| edge         |       |                     |     |       |        |       |
+| unseen       |       | -                   |     |       |        |       |
 
-Answer:
+**Question 3**: What is the relationship between these three classes and customer cone sizes? What is a possible explanation?
+
+(your answer here)
 
 ---
 
 ## Step 4 — How organizations distribute their customer cone across ASNs
 
-Top 50 organizations by number of ASNs:
+`scripts/org-cone-coverage-table.py`
 
-| organization | total ASNs | 100% cone | 99-75% cone | 74-50% cone | 49-25% cone | 25-1% cone | 0% cone |
-| ------------ | ---------- | --------- | ----------- | ----------- | ----------- | ---------- | ------- |
-|              |            |           |             |             |             |            |         |
+| organization | total ASNs | 100-99% | 98-66% | 65-33% | 32-1% | 1 ASN | 0 ASN |
+| ------------ | ---------- | ------- | ------ | ------ | ----- | ----- | ----- |
+|              |            |         |        |        |       |       |       |
+|              |            |         |        |        |       |       |       |
+|              |            |         |        |        |       |       |       |
+|              |            |         |        |        |       |       |       |
+|              |            |         |        |        |       |       |       |
+|              |            |         |        |        |       |       |       |
+|              |            |         |        |        |       |       |       |
+|              |            |         |        |        |       |       |       |
+|              |            |         |        |        |       |       |       |
+|              |            |         |        |        |       |       |       |
 
-Describe your three ASN classes based on the patterns you observe above:
+Describe your three organization classes based on the patterns you observe above:
 
-| class name | definition |
-| ---------- | ---------- |
-|            |            |
-|            |            |
-|            |            |
+-
+-
+-
+
+`scripts/org-category-table.py`
+
+| class name | total organizations | customer cone range |
+| ---------- | ------------------- | ------------------- |
+|            |                     |                     |
+|            |                     |                     |
+|            |                     |                     |
+
+**Question 4**: How well do your classes divide the system?
+
+(your answer here)
 
 ---
 
-## Step 5 — ASN class counts
+## Step 5 — Top 5 ASNs summary
 
-| group name | total ASNs (percentage) | description |
-| ---------- | ----------------------- | ----------- |
-|            |                         |             |
+| asn | name | country | Cone Size | Cone Class | Org Size | Org Dom |
+| --- | ---- | ------- | --------- | ---------- | -------- | ------- |
+|     |      |         |           |            |          |         |
+|     |      |         |           |            |          |         |
+|     |      |         |           |            |          |         |
+|     |      |         |           |            |          |         |
+|     |      |         |           |            |          |         |
 
-What does this tell you about how organizations are using their ASNs?
+**Question 5**: What do we know from this table about the largest ASNs? What do they have in common and what is different?
 
-Answer:
-
----
-
-## Step 6 — Top 30 ASNs summary
-
-| name | country | customer cone size | type of transit (step 3) | % of all visible ASNs in cone | ASN class (step 4) |
-| ---- | ------- | ------------------ | ------------------------ | ----------------------------- | ------------------ |
-|      |         |                    |                          |                        |                    |
-
-What do we know from this table about the largest ASNs? What do they have in common and what is different?
-
-Answer:
+(your answer here)
