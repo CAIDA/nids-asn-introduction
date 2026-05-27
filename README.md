@@ -100,6 +100,8 @@ Replace `(date)` with the actual date in the filenames (e.g., `20260501`).
 
 ## Analysis
 
+Please use data from 2026/05/01.
+
 ---
 
 ### Step 1 (5pt) — What kinds of values and fields do you expect to find in the dataset?
@@ -181,12 +183,12 @@ Notice the density near the low end makes it hard to read the distribution clear
 Now use a _Ramer-Douglas-Peucker (RDP) Algorithm_ (use rdp library) to identify natural breakpoints in the line. Look for a cluster at cone=1 (leaf nodes with no downstream customers), then look for breakpoints separating small, middle, and large providers in the tail. The buckets should not overlap.
 
 (example)
-| type   | range        | number of ASNs |
+| type | range | number of ASNs |
 | ------ | ------------ | -------------- |
-| one    | 1            | ???            |
-| small  | (min)..(max) | ???            |
-| middle | (min)..(max) | ???            |
-| large  | (min)..(max) | ???            |
+| one | 1 | ??? |
+| small | (min)..(max) | ??? |
+| middle | (min)..(max) | ??? |
+| large | (min)..(max) | ??? |
 
 **\*Question 2.1**: What does this tell you about ASNs distribution?
 
@@ -202,12 +204,12 @@ Create a distribution plot for organization sizes.
 Apply the same four-class breakdown you used for the customer cone:
 
 (example)
-| type   | range        | number of organizations |
+| type | range | number of organizations |
 | ------ | ------------ | ----------------------- |
-| one    | 1            | ???                     |
-| small  | (min)..(max) | ???                     |
-| middle | (min)..(max) | ???                     |
-| large  | (min)..(max) | ???                     |
+| one | 1 | ??? |
+| small | (min)..(max) | ??? |
+| middle | (min)..(max) | ??? |
+| large | (min)..(max) | ??? |
 
 What does this tell you about the organization size distribution? How does it compare to the customer cone distribution?
 
@@ -269,6 +271,7 @@ Fill in the table for the largest 5 ASNs.
 |     |      |         |           |            |          |         |
 
 Where:
+
 - **Cone Size**: customer cone size (Step 2)
 - **Cone Class**: one/small/middle/large classification from Step 2
 - **Org Size**: number of ASNs the organization operates (Step 1)
