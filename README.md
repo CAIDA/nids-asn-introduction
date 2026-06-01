@@ -83,14 +83,14 @@ nids-asn-introduction
 
 ### 5.1 Understanding ASN Organization Data
 
-Your assignment is to write a script (_scripts/org-table-fields.py_) that will create a table (_tables/org-table-fields.md_) modeled on the **Organization Table** below and replace the <u>underlined words</u> with the values they describe.
+Your assignment is to write a script (_scripts/org-table-fields.py_) that will create a table (_tables/org-table-fields.md_) modeled on the **Organization Table** below and replace the [<u>underlined words</u>] with the values they describe.
 
 #### Example
 
 Given the following values: **1,4,4,5,8**:
 
-- **<u>min</u>..<u>max</u>** ⇾ **1..8** : the minimum and maximum values for a given field
-- **<u>number uniques</u>** ⇾ **3** : the number of unique values in the field
+- **[<u>min</u>]..[<u>max</u>]** ⇾ **1..8** : the minimum and maximum values for a given field
+- **[<u>number uniques</u>]** ⇾ **3** : the number of unique values in the field
 
 #### Organization Table
 
@@ -100,19 +100,19 @@ You will write `scripts/org-table-fields.py` and it will create `tables/org-tabl
 
 | name    | type     | values                                    | description                                       |
 | ------- | -------- | ----------------------------------------- | ------------------------------------------------- |
-| score   | int      | <u>min</u>..<u>max</u>                    | organization sorting score's minimum and maximum  |
-| orgId   | string   | <u>number uniques</u>                     | number of unique organization IDs                 |
-| orgName | string   | <u>number unique</u>                      | number of unique organization names in file       |
-| country | string   | <u>number unique</u>                      | number of unique countries identified as HQs      |
-| source  | string   | <u>number unique</u>                      | number of unique Internet Registry sources        |
-| members | [string] | <u>min</u>..<u>max</u>                    | organization's minimum and maximum number of ASNs |
-| changed | date     | <u>YYYY/MM/DD</u> <br/> <u>YYYY/MM/DD</u> | last time the information changed in WHOIS        |
-| date    | date     | <u>YYYY/MM/DD</u> <br/> <u>YYYY/MM/DD</u> | current record date                               |
-| ts      | date     | <u>YYYY/MM/DD</u> <br/> <u>YYYY/MM/DD</u> | database record timestamp                         |
+| score   | int      | [<u>min</u>]..[<u>max</u>]                    | organization sorting score's minimum and maximum  |
+| orgId   | string   | [<u>number uniques</u>]                     | number of unique organization IDs                 |
+| orgName | string   | [<u>number unique</u>]                      | number of unique organization names in file       |
+| country | string   | [<u>number unique</u>]                      | number of unique countries identified as HQs      |
+| source  | string   | [<u>number unique</u>]                      | number of unique Internet Registry sources        |
+| members | [string] | [<u>min</u>]..[<u>max</u>]                    | organization's minimum and maximum number of ASNs |
+| changed | date     | [<u>YYYY/MM/DD</u>] <br/> [<u>YYYY/MM/DD</u>] | last time the information changed in WHOIS        |
+| date    | date     | [<u>YYYY/MM/DD</u>] <br/> [<u>YYYY/MM/DD</u>] | current record date                               |
+| ts      | date     | [<u>YYYY/MM/DD</u>] <br/> [<u>YYYY/MM/DD</u>] | database record timestamp                         |
 
-**number of organizations**: <u>number of organizations</u><br/>
-**number of ASNs**: <u>number of ASNs</u><br/>
-**sources**: <u>list of Internet Registry</u>
+**number of organizations**: [<u>number of organizations</u>]<br/>
+**number of ASNs**: [<u>number of ASNs</u>]<br/>
+**sources**: [<u>list of Internet Registry</u>]
 
 **Questions:**
 
@@ -167,7 +167,7 @@ In ppdc-ases.txt.bz2 lines that start with a '#' are a comment. All other lines 
 
 ### 6.2 Understanding ASN Customer Cone Classes
 
-Your assignment is to write `scripts/asn-customer-cone-classes.py` so that it creates the ASN Size Class table below and replaces the <u>underlined words</u>.
+Your assignment is to write `scripts/asn-customer-cone-classes.py` so that it creates the ASN Size Class table below and replaces the [<u>underlined words</u>].
 
 ```bash
 uv run scripts/asn-customer-cone-classes.py --output tables/asn-customer-cone-classes.md data/20260501.ppdc-ases.txt.bz2
@@ -175,18 +175,18 @@ uv run scripts/asn-customer-cone-classes.py --output tables/asn-customer-cone-cl
 
 - **class**: the name of the class
 - **range**: the range of values that defines the class
-  - <u>**max**</u>: is the maximum customer cone size seen in the class
+  - [<u>**max**</u>]: is the maximum customer cone size seen in the class
 - **number of ASNs**: the number of ASNs in the class
-  - **<u>total</u>**: is the total number of ASNs in the class
-  - **<u>percentage</u>**: is the percentage of all ASNs in the class (??.?)
+  - **[<u>total</u>]**: is the total number of ASNs in the class
+  - **[<u>percentage</u>]**: is the percentage of all ASNs in the class (??.?)
 
 |          class | range             | number of ASNs |        precentage |
 | -------------: | ----------------- | -------------: | ----------------: |
-|           stub | 1                 |   <u>total</u> | <u>percentage</u> |
-|  transit small | 2..10             |   <u>total</u> | <u>percentage</u> |
-| transit middle | 11..1000          |   <u>total</u> | <u>percentage</u> |
-|  transit large | 1001..10000       |   <u>total</u> | <u>percentage</u> |
-|   transit huge | 10001..<u>max</u> |   <u>total</u> | <u>percentage</u> |
+|           stub | 1                 |   [<u>total</u>] | [<u>percentage</u>] |
+|  transit small | 2..10             |   [<u>total</u>] | [<u>percentage</u>] |
+| transit middle | 11..1000          |   [<u>total</u>] | [<u>percentage</u>] |
+|  transit large | 1001..10000       |   [<u>total</u>] | [<u>percentage</u>] |
+|   transit huge | 10001..[<u>max</u>] |   [<u>total</u>] | [<u>percentage</u>] |
 
 **Questions:**
 
@@ -219,7 +219,7 @@ The example table below uses numbered placeholders for column headers. Your scri
 
 | name | 1st                 | 2nd                 | 3rd                 | 4th                 | other                 |
 | ---- | ------------------- | ------------------- | ------------------- | ------------------- | --------------------- |
-| stub | <u>total in 1st</u> | <u>total in 2nd</u> | <u>total in 3rd</u> | <u>total in 4th</u> | <u>total in other</u> |
+| stub | [<u>total in 1st</u>] | [<u>total in 2nd</u>] | [<u>total in 3rd</u>] | [<u>total in 4th</u>] | [<u>total in other</u>] |
 
 **Questions:**
 
