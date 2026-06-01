@@ -10,6 +10,8 @@ nids-asn-introduction
 └- report.md                    # final report template (you need to complete)
 ```
 
+You can find a glossy of terms at the bottom of the report.
+
 ## 2 Introduction
 
 Large backbone networks that route traffic for others—often referred to as transit providers—serve thousands of clients. Consequently, they require significantly more complex routing logic than smaller edge networks that have few or no downstream clients.
