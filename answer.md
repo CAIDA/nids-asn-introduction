@@ -9,7 +9,11 @@
 
 ### 5.1 Understanding ASN Organization Data
 
-(Put your `tables/org-table-fields.md` table here)
+{{INSERT:tables/org-table-fields.md}}
+
+**number of organizations**: [<u>number of organizations</u>]<br/>
+**number of ASNs**: [<u>number of ASNs</u>]<br/>
+**sources**: [<u>list of Internet Registries</u>]
 
 **Questions:**
 
@@ -31,7 +35,7 @@
 
 ### 6.2 Understanding ASN Customer Cone Classes
 
-(Put your `tables/asn-customer-cone-classes.md` table here)
+{{INSERT:tables/asn-customer-cone-classes.md}}
 
 **Questions:**
 
@@ -51,7 +55,7 @@
 
 ## 7 How are these classes divided across countries
 
-(Put your `tables/country-cone-classes.md` table here)
+{{INSERT:tables/country-cone-classes.md}}
 
 **Questions:**
 
