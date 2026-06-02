@@ -2,7 +2,7 @@
 
 ## 1 Learning Objectives
 
-The goal of this assignment is to understand Autonomous Systems, how organizations use them, and the concept of an AS's _customer cone_ by processing data sets that describe how ASNs are globally distributed across networks and countries.
+The goal of this assignment is to understand Autonomous Systems, how organizations use them, and the concept of an AS's _customer cone_ by processing data sets that describe how ASNs are globally distributed across networks and countries.  This assignment is a building block for studying the macroscopic topology of the Internet.
 
 ```
 nids-asn-introduction
@@ -22,14 +22,16 @@ You can find a glossary of terms at the bottom of this document.
 
 ## 2 Introduction
 
-Large backbone networks that route traffic for others—often referred to as transit providers—serve thousands of clients. Consequently, they require significantly more complex routing logic than smaller edge networks that have few or no downstream clients.
+<img width="40%" style="float:right;margin-right:2em;" src="images/asn-org.png">
 
-**What You Will Do**
-In this assignment, you will analyze datasets that map the macroscopic topology of the Internet. You will examine the independent administrative domains (identified by Autonomous System Numbers, or **ASNs**) that act as the nodes in this global network graph.
+An Autonomous System (or AS) is an independently operated network on the Internet — a collection of IP prefixes managed by a single administrative entity under a common routing policy. Each AS is identified by a globally unique **Autonomous System Number (ASN)**. Regional Internet Registries (RIRs), set up in the 1990s, allocate these numbers to organizations that operate network infrastructure. One organization may operate multiple ASNs, for example, to operate separate networks in different geographic regions or service tiers.
+CAIDA uses *WHOIS* information available from Regional and National Internet Registries to infer a mapping from AS numbers to the organizations that operate them. In this assignment you will learn to parse CAIDA's _AS to Organizations_ dataset to analyze properties of this global numbering system.
 
-Because Internet routing is largely determined by economics rather than strict shortest-path algorithms, we will be providing you with the **customer cone** for each ASN.
-You can think of a customer cone as a metric that defines a node's "reach" or sphere of influence—essentially, the subset of the network graph that relies on that specific ASN for global connectivity.
-This assignment will introduce you to these datasets and demonstrate how analysts use them using the prism of a network's **customer cone**.
+Large networks that route traffic for others, referred to as transit providers, require significantly more complex routing logic than smaller edge networks that have few or no downstream clients.  They may have many thousands of customer networks who pay them for transit service.   There is no central or public database of which networks are customers of which other networks; we must infer this from published routing table data.
+CAIDA provides such a data set that include for each AS, the list of other ASes we infer to be customers of that AS; we refer to this list as the inferred **customer cone** for each ASN.
+You can think of a customer cone as a metric that defines a node's reach or sphere of influence: essentially, the subset of the network graph that relies on that specific ASN for transit connectivity to the rest of the Internet.
+
+This assignment will introduce you to these datasets (CAIDA's _AS to Organizations_ and _customer cone_) and demonstrate how analysts use them.  For example, we can use the size of an AS's customer cone as a metric of that organization's size or importance.  We can also arrange the ASes as nodes in a graph reflecting customer-provider relationships.  At the bottom of this hierarchy are stub or edge organizations that pay someone else for all of their Internet access needs.  Each stub ASN is a **customer** of its transit **provider's** ASN. This relationship is called a **Provider-Customer (p2c)** relationship, with the customer below its provider in the hierarchy. Each of these transit providers in turn may have a **Provider-Customer** relationship with their own set of transit providers. This chain of **Provider-Customer** links are the foundation of the ASN Customer Cone. The ASN Customer Cone includes the ASN itself and the union of ASNs in its customers' customer cones — that is, the number of ASNs reachable through the target ASN's customers.
 
 For this assignment, you will explore the following two datasets:
 
@@ -44,26 +46,17 @@ For this assignment, you will explore the following two datasets:
 - [ASN 2 Organization](https://catalog.caida.org/dataset/as_organizations)
 - [Autonomous system (Internet)](<https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>) (Wikipedia)
 
-## 3 Background on Autonomous Systems and "Organizations" that operate them.
-
-<img width="40%" style="float:right;margin-right:2em;" src="images/asn-org.png">
-
-An Autonomous System (or AS) is an independently operated network on the Internet — a collection of IP prefixes managed by a single administrative entity under a common routing policy. Each AS is identified by a globally unique **Autonomous System Number (ASN)**. Regional Internet Registries (RIRs), set up in the 1990s, allocate these numbers to organizations that operate network infrastructure. One organization may operate multiple ASNs, for example, to operate separate networks in different geographic regions or service tiers.
-
-CAIDA uses WHOIS information available from Regional and National Internet Registries to infer a mapping from AS numbers to the organizations that operate them. In this section you will learn to parse CAIDA's _AS to Organizations_ dataset to analyze properties of this global numbering system.
-
-In this module, we will be using each organization's ASNs' Customer Cone size to give a perspective on the relative importance of each organization. The ASN topology can be arranged into a business hierarchy based on the relative business relationship between the various organizations. At the bottom of this hierarchy are stub or edge organizations that only want to pay someone else for Internet access. They pay their transit providers to carry (i.e. transit) their traffic to the rest of the Internet. Each stub ASN is a **customer** of its transit **provider**s' ASN. This relationship is called a **Provider-Customer** relationship, with the customer below its provider. Each of these transit providers in turn may have a **Provider-Customer** relationship with their own set of transit providers. This chain of **Provider-Customer** links are the foundation of the ASN Customer Cone. The ASN Customer Cone includes the ASN itself and the union of ASNs in its customers' customer cones — that is, the number of ASNs reachable through the target ASN's customers.
 
 ## 4 Setup your local environment
 
 ### 4.1 Required accounts
 
-You will not need accounts for this module.
+You will not need accounts on any infrastructure for this module; you can do it all on your laptop.
 
 ### 4.2 Required Libraries and Software
 
 This module uses [uv](https://docs.astral.sh/uv/), a Python package and project manager.
-The following instructions can be used to install uv and the module's dependencies.
+The following instructions install uv and its dependencies.
 
 ```bash
 # Install the Python manager uv
@@ -93,7 +86,7 @@ uv run scripts/build.py
 | cone classes by country | runs `scripts/country-cone-classes.py` → `tables/country-cone-classes.md` | **you write** |
 | compile final report | inserts tables into `answer.md` → `report.md` | provided |
 
-Each step is skipped if its output is already up to date, so re-running after editing one script only regenerates that table (and then recompiles the report). To rebuild everything from scratch:
+A step is skipped if its output is already up to date, so re-running after editing one script only regenerates that table, and then recompiles the report. To rebuild everything from scratch:
 
 ```bash
 uv run scripts/build.py --force
@@ -107,9 +100,9 @@ uv run scripts/build.py --list
 
 **Submit `report.md`** as your completed assignment.
 
-## 5 AS Organization Dataset
+## 5 CAIDA AS to Organization Mapping Dataset
 
-CAIDA provides a list of organizations with ASNs and the set of ASNs those organizations own. This dataset is inferred from the [Regional Internet Registry](https://en.wikipedia.org/wiki/Regional_Internet_registry) [WHOIS records](https://en.wikipedia.org/wiki/WHOIS). CAIDA provides this data through an API that requires pagination to retrieve the full dataset. The provided script, [scripts/orgs-download.py](scripts/orgs-download.py), handles this process automatically and stores the results in **data/orgs.jsonl**.
+CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with ASNs and the set of ASNs assigned to those organizations.  CAIDA infers these mappings based on [Regional Internet Registry](https://en.wikipedia.org/wiki/Regional_Internet_registry) [WHOIS records](https://en.wikipedia.org/wiki/WHOIS). CAIDA provides this data through an API that requires pagination to retrieve the full dataset. The provided script, [scripts/orgs-download.py](scripts/orgs-download.py), handles this process automatically and stores the results in **data/orgs.jsonl**.
 
 ```
 nids-asn-introduction
@@ -177,15 +170,11 @@ We define an AS A's customer cone as:
 
 In other words, an AS's customer cone contains itself, its customers, its customers' customers, and so on.
 
-This construct embeds an assumption that ASes in the customer cone for AS A pay AS A—either directly or indirectly—for transit. To measure this, we denote the **size** of an AS's customer cone as the total number of ASNs found within its cone set, providing a coarse metric of that AS's footprint in the routing system.
+This construct embeds an assumption that ASes in the customer cone for AS A pay AS A—either directly or indirectly—for transit. We denote the **size** of an AS's customer cone as the **total number of ASNs in its customer cone set**, providing a coarse metric of that AS's footprint in the routing system.
+ 
+### 6.1 Understanding ASN Customer Cones
 
-We define an AS's customer cone size as:
-
-- is the **total number of ASNs** in its customer cone
-
-### 6.1 Understanding ASN Customer Cone
-
-You will need to download CAIDA's May 2026 ASN Customer Cone (_20260501.ppdc-ases.txt.bz2_) file to the data directory. You will then write a script (_scripts/asn-customer-cone-classes.py_) that will divide the ASNs into bands based on their customer cone size.
+You will download CAIDA's May 2026 ASN Customer Cone (_20260501.ppdc-ases.txt.bz2_) file to the data directory. You will then write a script (_scripts/asn-customer-cone-classes.py_) that will divide the ASNs into bands based on their customer cone size.
 
 ```
 nids-asn-introduction
@@ -199,7 +188,7 @@ CAIDA provides its ASN customer cone as part of the **CAIDA AS Customer Cone (Se
 - download `https://catalog.caida.org/dataset/as_relationships_serial_1`
   - [20260501.ppdc-ases.txt.bz2](https://publicdata.caida.org/datasets/as-relationships/serial-1/20260501.ppdc-ases.txt.bz2) : Per-AS provider-peer-customer (PPDC) cones: for each AS, the set of all ASes reachable via customer links.
 
-In ppdc-ases.txt.bz2 lines that start with a '#' are a comment. All other lines start with a single ASN followed by a list of ASNs in its customer cone.
+In the `ppdc-ases.txt.bz2` file, lines that start with a '#' are a comment. All other lines start with a single ASN followed by a list of ASNs in its customer cone.
 
 ```
 # This is a comment
@@ -240,7 +229,7 @@ uv run scripts/asn-customer-cone-classes.py --output tables/asn-customer-cone-cl
 
 ## 7 How are these classes divided across countries
 
-Your assignment is to write a script that **dynamically determines** the top 4 countries by number of transit huge ASNs, then produces a breakdown table of ASN class counts for each of those countries plus an "other" bucket for all remaining countries. The script must discover the top countries from the data — do not hardcode country names. The discovered country codes become the column headers in the generated markdown table.
+Your task is to write a script that **dynamically determines** the top 4 countries by number of large transit ASNs, then produces a breakdown table of ASN class counts for each of those countries plus an "other" bucket for all remaining countries. The script must discover the top countries from the data — do not hardcode country names. The discovered country codes become the column headers in the generated markdown table.
 
 ```
 nids-asn-introduction
