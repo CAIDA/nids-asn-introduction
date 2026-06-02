@@ -2,7 +2,7 @@
 
 ## 1 Learning Objectives
 
-The goal of this assignment is to understand Autonomous Systems, how organizations use them, and the concept of an AS's _customer cone_ by processing data sets that describe how ASNs are globally distributed across networks and countries.  This assignment is a building block for studying the macroscopic topology of the Internet.
+The goal of this assignment is to understand Autonomous Systems, how organizations use them, and the concept of an AS's _customer cone_ by processing data sets that describe how ASNs are globally distributed across networks and countries. This assignment is a building block for studying the macroscopic topology of the Internet.
 
 ```
 nids-asn-introduction
@@ -25,13 +25,15 @@ You can find a glossary of terms at the bottom of this document.
 <img width="40%" style="float:right;margin-right:2em;" src="images/asn-org.png">
 
 An Autonomous System (or AS) is an independently operated network on the Internet — a collection of IP prefixes managed by a single administrative entity under a common routing policy. Each AS is identified by a globally unique **Autonomous System Number (ASN)**. Regional Internet Registries (RIRs), set up in the 1990s, allocate these numbers to organizations that operate network infrastructure. One organization may operate multiple ASNs, for example, to operate separate networks in different geographic regions or service tiers.
-CAIDA uses *WHOIS* information available from Regional and National Internet Registries to infer a mapping from AS numbers to the organizations that operate them. In this assignment you will learn to parse CAIDA's _AS to Organizations_ dataset to analyze properties of this global numbering system.
+CAIDA uses _WHOIS_ information available from Regional and National Internet Registries to infer a mapping from AS numbers to the organizations that operate them. In this assignment you will learn to parse CAIDA's _AS to Organizations_ dataset to analyze properties of this global numbering system.
 
-Large networks that route traffic for others, referred to as transit providers, require significantly more complex routing logic than smaller edge networks that have few or no downstream clients.  They may have many thousands of customer networks who pay them for transit service.   There is no central or public database of which networks are customers of which other networks; we must infer this from published routing table data.
+Large networks that route traffic for others, referred to as transit providers, require significantly more complex routing logic than smaller edge networks that have few or no downstream clients. They may have many thousands of customer networks who pay them for transit service. There is no central or public database of which networks are customers of which other networks; we must infer this from published routing table data.
 CAIDA provides such a data set that include for each AS, the list of other ASes we infer to be customers of that AS; we refer to this list as the inferred **customer cone** for each ASN.
 You can think of a customer cone as a metric that defines a node's reach or sphere of influence: essentially, the subset of the network graph that relies on that specific ASN for transit connectivity to the rest of the Internet.
 
-This assignment will introduce you to these datasets (CAIDA's _AS to Organizations_ and _customer cone_) and demonstrate how analysts use them.  For example, we can use the size of an AS's customer cone as a metric of that organization's size or importance.  We can also arrange the ASes as nodes in a graph reflecting customer-provider relationships.  At the bottom of this hierarchy are stub or edge organizations that pay someone else for all of their Internet access needs.  Each stub ASN is a **customer** of its transit **provider's** ASN. This relationship is called a **Provider-Customer (p2c)** relationship, with the customer below its provider in the hierarchy. Each of these transit providers in turn may have a **Provider-Customer** relationship with their own set of transit providers. This chain of **Provider-Customer** links are the foundation of the ASN Customer Cone. The ASN Customer Cone includes the ASN itself and the union of ASNs in its customers' customer cones — that is, the number of ASNs reachable through the target ASN's customers.
+This assignment will introduce you to these datasets (CAIDA's _AS to Organizations_ and _customer cone_) and demonstrate how analysts use them. For example, we can use the size of an AS's customer cone as a metric of that organization's size or importance. We can also arrange the ASes as nodes in a graph reflecting customer-provider relationships. At the bottom of this hierarchy are stub or edge organizations that pay someone else for all of their Internet access needs. Each stub ASN is a **customer** of its transit **provider's** ASN. This relationship is called a **Provider-Customer (p2c)** relationship, with the customer below its provider in the hierarchy. Each of these transit providers in turn may have a **Provider-Customer** relationship with their own set of transit providers. This chain of **Provider-Customer** links are the foundation of the ASN Customer Cone. The ASN Customer Cone includes the ASN itself and the union of ASNs in its customers' customer cones — that is, the number of ASNs reachable through the target ASN's customers.
+
+Some networks exchange traffic for free in a **Peer-Peer** relationship. These links are not used in the calculation of the customer cone. We will go into these in a future module.
 
 For this assignment, you will explore the following two datasets:
 
@@ -42,10 +44,10 @@ For this assignment, you will explore the following two datasets:
 
 - [Lecture: AS Relationships and Customer Cones](https://cseweb.ucsd.edu/classes/wi23/cse291-e/slides/cse291e-lecture-03.pdf) (slides)
 - [Autonomous Systems Topology](https://www.caida.org/catalog/media/2016_as_intro_topology_wind/as_intro_topology_wind.pdf) (slides)
-- [On the Importance of Being an AS: An Approach to Country-Level AS Rankings](https://catalog.caida.org/paper/2023_on_importance_being_as) (paper)
-- [ASN 2 Organization](https://catalog.caida.org/dataset/as_organizations)
+- [AS Relationships, Customer Cones, and Validation
+  ](https://catalog.caida.org/paper/2013_asrank) (customer cone paper)
+- [ASN 2 Organization](https://catalog.caida.org/dataset/as_organizations) (dataset details)
 - [Autonomous system (Internet)](<https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>) (Wikipedia)
-
 
 ## 4 Setup your local environment
 
@@ -78,13 +80,13 @@ uv run scripts/build.py
 
 `build.py` executes five steps in order:
 
-| step | what it does | provided or you write? |
-| ---- | ------------ | ---------------------- |
-| download organizations | fetches `data/orgs.jsonl` from the as2org API | provided |
-| organization field table | runs `scripts/org-table-fields.py` → `tables/org-table-fields.md` | **you write** |
-| customer-cone size classes | runs `scripts/asn-customer-cone-classes.py` → `tables/asn-customer-cone-classes.md` | **you write** |
-| cone classes by country | runs `scripts/country-cone-classes.py` → `tables/country-cone-classes.md` | **you write** |
-| compile final report | inserts tables into `answer.md` → `report.md` | provided |
+| step                       | what it does                                                                        | provided or you write? |
+| -------------------------- | ----------------------------------------------------------------------------------- | ---------------------- |
+| download organizations     | fetches `data/orgs.jsonl` from the as2org API                                       | provided               |
+| organization field table   | runs `scripts/org-table-fields.py` → `tables/org-table-fields.md`                   | **you write**          |
+| customer-cone size classes | runs `scripts/asn-customer-cone-classes.py` → `tables/asn-customer-cone-classes.md` | **you write**          |
+| cone classes by country    | runs `scripts/country-cone-classes.py` → `tables/country-cone-classes.md`           | **you write**          |
+| compile final report       | inserts tables into `answer.md` → `report.md`                                       | provided               |
 
 A step is skipped if its output is already up to date, so re-running after editing one script only regenerates that table, and then recompiles the report. To rebuild everything from scratch:
 
@@ -102,7 +104,7 @@ uv run scripts/build.py --list
 
 ## 5 CAIDA AS to Organization Mapping Dataset
 
-CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with ASNs and the set of ASNs assigned to those organizations.  CAIDA infers these mappings based on [Regional Internet Registry](https://en.wikipedia.org/wiki/Regional_Internet_registry) [WHOIS records](https://en.wikipedia.org/wiki/WHOIS). CAIDA provides this data through an API that requires pagination to retrieve the full dataset. The provided script, [scripts/orgs-download.py](scripts/orgs-download.py), handles this process automatically and stores the results in **data/orgs.jsonl**.
+CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with ASNs and the set of ASNs assigned to those organizations. CAIDA infers these mappings based on [Regional Internet Registry](https://en.wikipedia.org/wiki/Regional_Internet_registry) [WHOIS records](https://en.wikipedia.org/wiki/WHOIS). CAIDA provides this data through an API that requires pagination to retrieve the full dataset. The provided script, [scripts/orgs-download.py](scripts/orgs-download.py), handles this process automatically and stores the results in **data/orgs.jsonl**.
 
 ```
 nids-asn-introduction
@@ -118,14 +120,14 @@ nids-asn-introduction
 
 ### 5.1 Understanding ASN Organization Data
 
-Your assignment is to write a script (_scripts/org-table-fields.py_) that will create a table (_tables/org-table-fields.md_) modeled on the **Organization Table** below and replace the [<u>underlined words</u>] with the values they describe.
+Your assignment is to write a script (_scripts/org-table-fields.py_) that will create a table (_tables/org-table-fields.md_) modeled on the **Organization Table** below and replace the [words in brackets] with the values they describe.
 
 #### Example
 
 Given the following values: **1,4,4,5,8**:
 
-- **[<u>min</u>]..[<u>max</u>]** ⇾ **1..8** : the minimum and maximum values for a given field
-- **[<u>number uniques</u>]** ⇾ **3** : the number of unique values in the field
+- **[min]..[max]** ⇾ **1..8** : the minimum and maximum values for a given field
+- **[number uniques]** ⇾ **3** : the number of unique values in the field
 
 #### Organization Table
 
@@ -133,21 +135,21 @@ You will write `scripts/org-table-fields.py` and it will create `tables/org-tabl
 
 `uv run scripts/org-table-fields.py --output tables/org-table-fields.md data/orgs.jsonl`
 
-| name    | type     | values                                    | description                                       |
-| ------- | -------- | ----------------------------------------- | ------------------------------------------------- |
-| score   | int      | [<u>min</u>]..[<u>max</u>]                    | organization sorting score's minimum and maximum  |
-| orgId   | string   | [<u>number uniques</u>]                     | number of unique organization IDs                 |
-| orgName | string   | [<u>number unique</u>]                      | number of unique organization names in file       |
-| country | string   | [<u>number unique</u>]                      | number of unique countries identified as HQs      |
-| source  | string   | [<u>number unique</u>]                      | number of unique Internet Registry sources        |
-| members | [string] | [<u>min</u>]..[<u>max</u>]                    | organization's minimum and maximum number of ASNs |
-| changed | date     | [<u>YYYY/MM/DD</u>] <br/> [<u>YYYY/MM/DD</u>] | last time the information changed in WHOIS        |
-| date    | date     | [<u>YYYY/MM/DD</u>] <br/> [<u>YYYY/MM/DD</u>] | current record date                               |
-| ts      | date     | [<u>YYYY/MM/DD</u>] <br/> [<u>YYYY/MM/DD</u>] | database record timestamp                         |
+| name    | type     | values                                        | description                                       |
+| ------- | -------- | --------------------------------------------- | ------------------------------------------------- |
+| score   | int      | [min]..[max]                    | organization sorting score's minimum and maximum  |
+| orgId   | string   | [number uniques]                       | number of unique organization IDs                 |
+| orgName | string   | [number unique]                        | number of unique organization names in file       |
+| country | string   | [number unique]                        | number of unique countries identified as HQs      |
+| source  | string   | [number unique]                        | number of unique Internet Registry sources        |
+| members | [string] | [min]..[max]                    | organization's minimum and maximum number of ASNs |
+| changed | date     | [YYYY/MM/DD] <br/> [YYYY/MM/DD] | last time the information changed in WHOIS        |
+| date    | date     | [YYYY/MM/DD] <br/> [YYYY/MM/DD] | current record date                               |
+| ts      | date     | [YYYY/MM/DD] <br/> [YYYY/MM/DD] | database record timestamp                         |
 
-**number of organizations**: [<u>number of organizations</u>]<br/>
-**number of ASNs**: [<u>number of ASNs</u>]<br/>
-**sources**: [<u>list of Internet Registry</u>]
+**number of organizations**: [number of organizations]<br/>
+**number of ASNs**: [number of ASNs]<br/>
+**sources**: [list of Internet Registry]
 
 **Questions:**
 
@@ -171,7 +173,7 @@ We define an AS A's customer cone as:
 In other words, an AS's customer cone contains itself, its customers, its customers' customers, and so on.
 
 This construct embeds an assumption that ASes in the customer cone for AS A pay AS A—either directly or indirectly—for transit. We denote the **size** of an AS's customer cone as the **total number of ASNs in its customer cone set**, providing a coarse metric of that AS's footprint in the routing system.
- 
+
 ### 6.1 Understanding ASN Customer Cones
 
 You will download CAIDA's May 2026 ASN Customer Cone (_20260501.ppdc-ases.txt.bz2_) file to the data directory. You will then write a script (_scripts/asn-customer-cone-classes.py_) that will divide the ASNs into bands based on their customer cone size.
@@ -200,7 +202,7 @@ In the `ppdc-ases.txt.bz2` file, lines that start with a '#' are a comment. All 
 
 ### 6.2 Understanding ASN Customer Cone Classes
 
-Your assignment is to write `scripts/asn-customer-cone-classes.py` so that it creates the ASN Size Class table below and replaces the [<u>underlined words</u>].
+Your assignment is to write `scripts/asn-customer-cone-classes.py` so that it creates the ASN Size Class table below and replaces the [underlined words].
 
 ```bash
 uv run scripts/asn-customer-cone-classes.py --output tables/asn-customer-cone-classes.md data/20260501.ppdc-ases.txt.bz2
@@ -208,18 +210,18 @@ uv run scripts/asn-customer-cone-classes.py --output tables/asn-customer-cone-cl
 
 - **class**: the name of the class
 - **range**: the range of values that defines the class
-  - [<u>**max**</u>]: is the maximum customer cone size seen in the class
+  - [**max**]: is the maximum customer cone size seen in the class
 - **number of ASNs**: the number of ASNs in the class
-  - **[<u>total</u>]**: is the total number of ASNs in the class
-  - **[<u>percentage</u>]**: is the percentage of all ASNs in the class (??.?)
+  - **[total]**: is the total number of ASNs in the class
+  - **[percentage]**: is the percentage of all ASNs in the class (??.?)
 
-|          class | range             | number of ASNs |        percentage |
-| -------------: | ----------------- | -------------: | ----------------: |
-|           stub | 1                 |   [<u>total</u>] | [<u>percentage</u>] |
-|  transit small | 2..10             |   [<u>total</u>] | [<u>percentage</u>] |
-| transit middle | 11..1000          |   [<u>total</u>] | [<u>percentage</u>] |
-|  transit large | 1001..10000       |   [<u>total</u>] | [<u>percentage</u>] |
-|   transit huge | 10001..[<u>max</u>] |   [<u>total</u>] | [<u>percentage</u>] |
+|          class | range               | number of ASNs |          percentage |
+| -------------: | ------------------- | -------------: | ------------------: |
+|           stub | 1                   | [total] | [percentage] |
+|  transit small | 2..10               | [total] | [percentage] |
+| transit middle | 11..1000            | [total] | [percentage] |
+|  transit large | 1001..10000         | [total] | [percentage] |
+|   transit huge | 10001..[max] | [total] | [percentage] |
 
 **Questions:**
 
@@ -250,9 +252,9 @@ nids-asn-introduction
 
 The example table below uses numbered placeholders for column headers. Your script should replace these with the actual 2-letter country codes it discovers from the data (e.g., `US`, `CN`, `BR`).
 
-| name | 1st                 | 2nd                 | 3rd                 | 4th                 | other                 |
-| ---- | ------------------- | ------------------- | ------------------- | ------------------- | --------------------- |
-| stub | [<u>total in 1st</u>] | [<u>total in 2nd</u>] | [<u>total in 3rd</u>] | [<u>total in 4th</u>] | [<u>total in other</u>] |
+| name | 1st                   | 2nd                   | 3rd                   | 4th                   | other                   |
+| ---- | --------------------- | --------------------- | --------------------- | --------------------- | ----------------------- |
+| stub | [total in 1st] | [total in 2nd] | [total in 3rd] | [total in 4th] | [total in other] |
 
 **Questions:**
 
