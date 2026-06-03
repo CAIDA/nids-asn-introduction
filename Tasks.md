@@ -1,5 +1,15 @@
 ## Overview
 
+```
+Tasks.md                            ⬅ # Update with tables and answers
+└- scripts/
+|  ├- asn-cone-classes.py           ⬅ # You will need to write
+|  └- country-cone-classes.py       ⬅ # You will need to write
+└- tables/
+   ├- asn-customer-cone-classes.md
+   └- country-cone-classes.md
+```
+
 - Task 1 [Download Datasets and read Overviews](Datasets.md)
 - Task 2: Create **scripts/asn-cone-classes.py**
   - step 2.1 use that script to create **tables/asn-cone-classes.md**
@@ -83,8 +93,8 @@ uv run scripts/country-cone-classes.py --output tables/country-cone-classes.md -
 
 The example table below uses numbered placeholders for column headers. Your script should replace these with the actual 2-letter country codes it discovers from the data (e.g., `US`, `CN`, `BR`).
 
-| name           | 1st           | 2nd           | 3rd           | 4th          | other         |
-| -------------- | ------------- | ------------- | ------------- | ------------ | ------------- |
+| name           | 1st           | 2nd           | 3rd           | 4th           | other         |
+| -------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | stub           | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) |
 | transit small  | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) |
 | transit middle | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) |
