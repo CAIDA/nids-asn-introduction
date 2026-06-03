@@ -1,4 +1,4 @@
-[README](README..md) | [Background](Background.md) ⬅ | Datasets | ⮕ [Tasks](Tasks.md)
+[README](README..md) | [Background](Background.md) ⬅ Datasets ⮕  [Tasks](Tasks.md)
 
 # Datasets
 
@@ -73,3 +73,4 @@ In the `ppdc-ases.txt.bz2` file, lines that start with a '#' are a comment. All 
 # 1's customer cone size is 1 and includes only itself
 1 1
 ```
+[README](README..md) | [Background](Background.md) ⬅ Datasets ⮕  [Tasks](Tasks.md)

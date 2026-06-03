@@ -1,3 +1,6 @@
+
+[README](README..md) | [Background](Background.md) ⬅ Setup ⮕ [Datasets ](Datasets.md)
+
 # Setup your local environment
 
 This module uses [uv](https://docs.astral.sh/uv/), a Python package and project manager.
