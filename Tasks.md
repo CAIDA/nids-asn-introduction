@@ -52,7 +52,7 @@ uv run scripts/asn-cone-classes.py --output tables/asn-cone-classes.md data/2026
 
 |          class | range        | number of ASNs |   percentage |
 | -------------: | ------------ | -------------: | -----------: |
-|           stub | 1            |        [total] | [percentage] |
+|           edge | 1            |        [total] | [percentage] |
 |  transit small | 2..10        |        [total] | [percentage] |
 | transit middle | 11..1000     |        [total] | [percentage] |
 |  transit large | 1001..10000  |        [total] | [percentage] |
@@ -60,9 +60,9 @@ uv run scripts/asn-cone-classes.py --output tables/asn-cone-classes.md data/2026
 
 ### 2.2 Answer questions 1, 2, and 3
 
-1. What percentage of ASNs are stub ASes (customer cone size of 1)? What does this suggest about the structure of the Internet?
+1. What percentage of ASNs are edge ASes (customer cone size of 1)? What does this suggest about the structure of the Internet?
 2. How large is the maximum customer cone? What does this tell you about the most influential ASes on the Internet?
-3. How do the proportions of stub, small transit, and large transit ASes compare? What does this distribution reveal about how ASes are organized hierarchically?
+3. How do the proportions of edge, small transit, and large transit ASes compare? What does this distribution reveal about how ASes are organized hierarchically?
 
 ## Task 3: How are these classes divided across countries
 
@@ -99,7 +99,7 @@ The example table below uses numbered placeholders for column headers. Your scri
 
 | name           | 1st           | 2nd           | 3rd           | 4th           | other         |
 | -------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| stub           | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) |
+| edge           | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) |
 | transit small  | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) |
 | transit middle | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) |
 | transit large  | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) | [total] ([%]) |
@@ -109,6 +109,6 @@ The example table below uses numbered placeholders for column headers. Your scri
 
 4. Which countries have the most transit huge ASNs? What does this tell you about where Internet infrastructure is concentrated?
 5. What proportion of all ASNs fall in the "other" category? What does this suggest about the geographic distribution of the global Internet?
-6. Do the same countries dominate across all AS classes (stub, transit small, transit huge)? What patterns do you observe across the rows?
+6. Do the same countries dominate across all AS classes (edge, transit small, transit huge)? What patterns do you observe across the rows?
 
 [README](Readme.md) | [Introduction](Introduction.md) | [Datasets](Datasets.md) | Tasks ⮕ [Report](Report.md)

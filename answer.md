@@ -39,7 +39,7 @@
 
 **Questions:**
 
-1. What percentage of ASNs are stub ASes (customer cone size of 1)? What does this suggest about the structure of the Internet?
+1. What percentage of ASNs are edge ASes (customer cone size of 1)? What does this suggest about the structure of the Internet?
 
    **(your answer here)**
 
@@ -47,7 +47,7 @@
 
    **(your answer here)**
 
-3. How do the proportions of stub, small transit, and large transit ASes compare? What does this distribution reveal about how ASes are organized hierarchically?
+3. How do the proportions of edge, small transit, and large transit ASes compare? What does this distribution reveal about how ASes are organized hierarchically?
 
    **(your answer here)**
 
@@ -67,6 +67,6 @@
 
    **(your answer here)**
 
-3. Do the same countries dominate across all AS classes (stub, transit small, transit huge)? What patterns do you observe across the rows?
+3. Do the same countries dominate across all AS classes (edge, transit small, transit huge)? What patterns do you observe across the rows?
 
    **(your answer here)**

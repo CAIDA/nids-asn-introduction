@@ -27,22 +27,6 @@ Manually download the May 1, 2026 AS Customer Cone file.
 
 **command**: `wget -O data/20260501.ppdc-ases.txt.bz2 https://publicdata.caida.org/datasets/as-relationships/serial-1/20260501.ppdc-ases.txt.bz2`
 
-## CAIDA AS to Organization Mapping Dataset
-
-CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with ASNs and the set of ASNs assigned to those organizations. CAIDA infers these mappings based on [Regional Internet Registry](https://en.wikipedia.org/wiki/Regional_Internet_registry) [WHOIS records](https://en.wikipedia.org/wiki/WHOIS). CAIDA provides this data through an API that requires pagination to retrieve the full dataset. The provided script, [scripts/org-download.py ](scripts/org-download.py), handles this process automatically and stores the results in **data/orgs.jsonl**.
-
-| name    | type     | values                      | description                                                                                                |
-| ------- | -------- | --------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| score   | int      | 1..120793                   | organization sorting score (min..max)                                                                      |
-| orgId   | string   | 96894                       | organization ID (number of unique IDs)                                                                     |
-| orgName | string   | 91067                       | organization name (number of unique names)                                                                 |
-| country | string   | 239                         | organization's headquarters country (number of unique codes)                                               |
-| source  | string   | 7                           | Internet Registry source (number of registries)<br> AFRINIC, APNIC, APNIC,JPNIC, ARIN, JPNIC, LACNIC, RIPE |
-| members | [string] | 1..1008                     | member ASNs (min..max list size)                                                                           |
-| changed | date     | 1991/06/12 <br/> 2026/04/01 | last time the information was changed in WHOIS                                                             |
-| date    | date     | 2026/04/01 <br/> 2026/04/01 | current record date                                                                                        |
-| ts      | date     | 2026/04/17 <br/> 2026/04/17 | database record timestamp                                                                                  |
-
 ## AS Customer Cones
 
 <img src="images/customer-cones.png">
@@ -73,5 +57,21 @@ In the `ppdc-ases.txt.bz2` file, lines that start with a '#' are a comment. All 
 # 1's customer cone size is 1 and includes only itself
 1 1
 ```
+
+## CAIDA AS to Organization Mapping Dataset
+
+CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with ASNs and the set of ASNs assigned to those organizations. CAIDA infers these mappings based on [Regional Internet Registry](https://en.wikipedia.org/wiki/Regional_Internet_registry) [WHOIS records](https://en.wikipedia.org/wiki/WHOIS). CAIDA provides this data through an API that requires pagination to retrieve the full dataset. The provided script, [scripts/org-download.py ](scripts/org-download.py), handles this process automatically and stores the results in **data/orgs.jsonl**.
+
+| name    | type     | values                      | description                                                                                                |
+| ------- | -------- | --------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| score   | int      | 1..120793                   | organization sorting score (min..max)                                                                      |
+| orgId   | string   | 96894                       | organization ID (number of unique IDs)                                                                     |
+| orgName | string   | 91067                       | organization name (number of unique names)                                                                 |
+| country | string   | 239                         | organization's headquarters country (number of unique codes)                                               |
+| source  | string   | 7                           | Internet Registry source (number of registries)<br> AFRINIC, APNIC, APNIC,JPNIC, ARIN, JPNIC, LACNIC, RIPE |
+| members | [string] | 1..1008                     | member ASNs (min..max list size)                                                                           |
+| changed | date     | 1991/06/12 <br/> 2026/04/01 | last time the information was changed in WHOIS                                                             |
+| date    | date     | 2026/04/01 <br/> 2026/04/01 | current record date                                                                                        |
+| ts      | date     | 2026/04/17 <br/> 2026/04/17 | database record timestamp                                                                                  |
 
 [README](README..md) | [Introduction](Introduction.md) | Datasets ⮕ [Tasks](Tasks.md) | [Report](Report.md)

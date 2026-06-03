@@ -32,7 +32,7 @@ def open_safe(filename: str | Path, encoding: str = "utf-8") -> Iterator[TextIO]
 
 
 CLASSES: list[tuple[str, int, int]] = [
-    ("stub",           1,     1),
+    ("edge",           1,     1),
     ("transit small",  2,     10),
     ("transit middle", 11,    1000),
     ("transit large",  1001,  10000),
@@ -45,7 +45,7 @@ FILTER_MAP: dict[str, str | None] = {
     "large":  "transit large",
     "middle": "transit middle",
     "small":  "transit small",
-    "sub":    "stub",
+    "sub":    "edge",
     "total":  None,
 }
 
