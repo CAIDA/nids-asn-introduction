@@ -32,7 +32,7 @@ nids-asn-introduction
 ├- Datasets.md                         # Dataset overview and download instructions
 ├- Tasks.md                        ⬅ # final report
 └- scripts/
-|  ├- orgs-download.py                  # downloads from the as2org API (provided)
+|  ├- org-download.py                   # downloads from the as2org API (provided)
 |  ├- asn-cone-classes.py           ⬅  # You will need to finish
 |  └- country-cone-classes.py       ⬅  # You will need to finish
 └- tables/

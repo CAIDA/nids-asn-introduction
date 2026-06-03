@@ -2,7 +2,7 @@
 """Download organization records from the CAIDA AS2org API and save as JSONL.
 
 Usage:
-    uv run scripts/orgs-download.py \
+    uv run scripts/org-download.py  \
         --url https://api.data.caida.org/as2org/v1/orgs/ \
         --output data/orgs.jsonl
 """

@@ -1,3 +1,5 @@
+[README](README..md) | [Background](Background.md) ⬅ | Datasets | ⮕ [Tasks](Tasks.md)
+
 # Datasets
 
 ```
@@ -8,13 +10,13 @@ data
 
 ### step 1: Download CAIDA AS to Organization Mapping
 
-We have provided `scripts/orgs-download.py` to download the dataset from CAIDA's as2org API.
+We have provided `scripts/org-download.py ` to download the dataset from CAIDA's as2org API.
 It will place the data in your data directory as `data/orgs.jsonl`.
 
 - API: https://api.data.caida.org/as2org/v1/orgs/
-- script: [scripts/orgs-download.py](scripts/orgs-download.py) will download the full set of organizations
+- script: [scripts/org-download.py ](scripts/org-download.py) will download the full set of organizations
 
-**command:** `uv run scripts/orgs-download.py --output data/orgs.jsonl`
+**command:** `uv run scripts/org-download.py  --output data/orgs.jsonl`
 
 ### step 2: Download CAIDA AS Customer Cone
 
@@ -27,7 +29,7 @@ Manually download the May 1, 2026 AS Customer Cone file.
 
 ## CAIDA AS to Organization Mapping Dataset
 
-CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with ASNs and the set of ASNs assigned to those organizations. CAIDA infers these mappings based on [Regional Internet Registry](https://en.wikipedia.org/wiki/Regional_Internet_registry) [WHOIS records](https://en.wikipedia.org/wiki/WHOIS). CAIDA provides this data through an API that requires pagination to retrieve the full dataset. The provided script, [scripts/orgs-download.py](scripts/orgs-download.py), handles this process automatically and stores the results in **data/orgs.jsonl**.
+CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with ASNs and the set of ASNs assigned to those organizations. CAIDA infers these mappings based on [Regional Internet Registry](https://en.wikipedia.org/wiki/Regional_Internet_registry) [WHOIS records](https://en.wikipedia.org/wiki/WHOIS). CAIDA provides this data through an API that requires pagination to retrieve the full dataset. The provided script, [scripts/org-download.py ](scripts/org-download.py), handles this process automatically and stores the results in **data/orgs.jsonl**.
 
 | name    | type     | values                      | description                                                                                                |
 | ------- | -------- | --------------------------- | ---------------------------------------------------------------------------------------------------------- |
