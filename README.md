@@ -37,8 +37,8 @@ nids-asn-introduction
 |  ├- asn-cone-classes.py           ⬅  # You will need to finish
 |  └- country-cone-classes.py       ⬅  # You will need to finish
 └- tables/
-   ├- asn-customer-cone-classes.md  ⬅  # created by matching script
-   └- country-cone-classes.md       ⬅  # created by matching script
+   ├- asn-customer-cone-classes.md     # created by matching script
+   └- country-cone-classes.md          # created by matching script
 ```
 
 ### Glossary
