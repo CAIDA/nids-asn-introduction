@@ -1,4 +1,5 @@
-[README](Readme.md) | [Background](Background.md) | [Datasets](Datasets.md)  ⬅ Tasks
+[README](Readme.md) | [Introduction](Introduction.md) | [Datasets](Datasets.md) ⬅ Tasks | [Report](Report.md)
+
 ## Overview
 
 ```
@@ -32,9 +33,9 @@ All tables and the final Report.md are in Markdown.
 
 ### 2.1 Create scripts/asn-cone-classes.py
 
-Create `scripts/asn-cone-classes.py` so that it creates **Table 1**
+You need to write **scripts/asn-cone-classes.py** so that it will run with the following parameters and produce **Table 1**.
 
-Since we will be testing your script with the following command:
+We have provided a skeleton script for you to use. Please replace the **TODO** sections with your code.
 
 ```bash
 uv run scripts/asn-cone-classes.py --output tables/asn-cone-classes.md data/20260501.ppdc-ases.txt.bz2
@@ -110,4 +111,4 @@ The example table below uses numbered placeholders for column headers. Your scri
 5. What proportion of all ASNs fall in the "other" category? What does this suggest about the geographic distribution of the global Internet?
 6. Do the same countries dominate across all AS classes (stub, transit small, transit huge)? What patterns do you observe across the rows?
 
-[README](Readme.md) | [Background](Background.md) | [Datasets](Datasets.md)  ⬅ Tasks
+[README](Readme.md) | [Introduction](Introduction.md) | [Datasets](Datasets.md) | Tasks ⮕ [Report](Report.md)
