@@ -17,8 +17,8 @@ Start by reading **Introduction** to get the background needed to understand the
 
 You will need to update and submit the following files.
 
-- [scripts/asn-cone-classes.py](scripts/asn-cone-classes.py) (section 1)
-- [scripts/country-cone-classes.py](scripts/country-cone-classes.py) (section 2)
+- [scripts/asn-cone-classes.py](scripts/asn-cone-classes.py) (task 2)
+- [scripts/country-cone-classes.py](scripts/country-cone-classes.py) (task 3)
 - [Report.md](Report.md)
   - copy the tables you generated into the report
   - answer the questions in each section
@@ -30,14 +30,15 @@ nids-asn-introduction
 ├- Background.md                       # Introduction and background
 ├- Setup.md                            # Setup the environment
 ├- Datasets.md                         # Dataset overview and download instructions
-├- Tasks.md                        ⬅ # final report
+├- Tasks.md                            # Task instructions
+├- Report.md                        ⬅ # final report
 └- scripts/
 |  ├- org-download.py                   # downloads from the as2org API (provided)
 |  ├- asn-cone-classes.py           ⬅  # You will need to finish
 |  └- country-cone-classes.py       ⬅  # You will need to finish
 └- tables/
-   ├- asn-customer-cone-classes.md  ⬅  # created by matching script
-   └- country-cone-classes.md       ⬅  # created by matching script
+   ├- asn-customer-cone-classes.md     # created by matching script
+   └- country-cone-classes.md          # created by matching script
 ```
 
 ### Glossary
