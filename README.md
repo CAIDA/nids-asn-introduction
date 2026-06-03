@@ -17,8 +17,8 @@ Start by reading **Introduction** to get the background needed to understand the
 
 You will need to update and submit the following files.
 
-- [scripts/asn-cone-classes.py](scripts/asn-cone-classes.py) (section 1)
-- [scripts/country-cone-classes.py](scripts/country-cone-classes.py) (section 2)
+- [scripts/asn-cone-classes.py](scripts/asn-cone-classes.py) (task 2)
+- [scripts/country-cone-classes.py](scripts/country-cone-classes.py) (task 3)
 - [Report.md](Report.md)
   - copy the tables you generated into the report
   - answer the questions in each section
