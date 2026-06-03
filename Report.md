@@ -1,7 +1,24 @@
+[README](Readme.md) | [Background](Background.md) | [Datasets](Datasets.md) | [Tasks](Tasks.md) | Report
+
 # How the Internet assigns and uses Autonomous Systems (ASes)
 
 **Name:** (your name here)<br/>
 **Date:** (date here)
+
+## To Do
+
+- **Task 1**: Download and review Data
+  - [ ] [Read Dataset Overview](Datasets.md)
+  - [ ] download orgs.jsonl <br/>
+        `uv run scripts/org-download.py  --output data/orgs.jsonl`
+  - [ ] download ppdc-ases.txt <br/>
+        `wget -O data/20260501.ppdc-ases.txt.bz2 https://publicdata.caida.org/datasets/as-relationships/serial-1/20260501.ppdc-ases.txt.bz2`
+- **Task 2**: ASN Classififed by ASN Customer Cone size
+  - [ ] [Read Task 2](Tasks.md#task-2-asn-classified-by-asn-customer-cone-size)
+  - [ ] [Replace the TODO comments with your code in asn-cone-classes.py](scripts/asn-cone-classes.py)
+  - [ ] build tables/asn-cone-classes.md <br/>
+        `uv run scripts/asn-cone-classes.py --output tables/asn-cone-classes.md data/20260501.ppdc-ases.txt.bz2`
+  - [ ] copy the table/asn-cone-classes.md into this document at INSERT
 
 ---
 
@@ -46,3 +63,5 @@
 6. Do the same countries dominate across all AS classes (stub, transit small, transit huge)? What patterns do you observe across the rows?
 
    **(your answer here)**
+
+[README](Readme.md) | [Background](Background.md) | [Datasets](Datasets.md) | [Tasks](Tasks.md) | Report
