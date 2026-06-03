@@ -30,7 +30,8 @@ nids-asn-introduction
 ├- Background.md                       # Introduction and background
 ├- Setup.md                            # Setup the environment
 ├- Datasets.md                         # Dataset overview and download instructions
-├- Tasks.md                        ⬅ # final report
+├- Tasks.md                            # Task instructions
+├- Report.md                        ⬅ # final report
 └- scripts/
 |  ├- orgs-download.py                  # downloads from the as2org API (provided)
 |  ├- asn-cone-classes.py           ⬅  # You will need to finish
