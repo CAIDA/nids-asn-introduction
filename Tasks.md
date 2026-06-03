@@ -18,6 +18,8 @@ Tasks.md                            ⬅ # Update with tables and answers
   - step 3.1 use that script to create **tables/country-cone-classes.md**
   - step 3.2 use **tables/country-cone-classes.md** to answer questions 4, 5, and 6
 
+All tables and the final Report.md are in Markdown.
+
 ## Task 1 Download datasets
 
 ([Instructions and Overview](Datasets.md))
