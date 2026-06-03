@@ -8,25 +8,21 @@
 ## To Do
 
 - **Task 1**: Download and review Data
-  - [ ] download orgs.jsonl <br/>
-        `uv run scripts/org-download.py  --output data/orgs.jsonl`
-  - [ ] download ppdc-ases.txt <br/>
-        `wget -O data/20260501.ppdc-ases.txt.bz2 https://publicdata.caida.org/datasets/as-relationships/serial-1/20260501.ppdc-ases.txt.bz2`
-- **Task 2**: ASN Classififed by ASN Customer Cone size
+  - [ ] download orgs.jsonl
+  - [ ] download ppdc-ases.txt
+- [**Task 2**: ASN Classified by ASN Customer Cone size](#task-2-asn-classified-by-asn-customer-cone-size)
   - [ ] [Read AS Customer Cone Overview](Datasets.md#as-customer-cones)
   - [ ] [Read Task 2](Tasks.md#task-2-asn-classified-by-asn-customer-cone-size)
   - [ ] Replace the TODO comments with your code in [scripts/asn-cone-classes.py](scripts/asn-cone-classes.py)
-  - [ ] build tables/asn-cone-classes.md <br/>
-        `uv run scripts/asn-cone-classes.py --output tables/asn-cone-classes.md data/20260501.ppdc-ases.txt.bz2`
+  - [ ] build tables/asn-cone-classes.md
   - [ ] copy the table/asn-cone-classes.md into this document at INSERT
   - [ ] Answer question 1,2, and 3
-- **Task 3**:
+- [**Task 3**: How are these classes divided across countries](#task-3-how-are-these-classes-divided-across-countries)
   - [ ] [Read AS 2 Org Overview](Datasets.md#caida-as-to-organization-mapping-dataset)
   - [ ] [Read Task 3](Tasks.md#task-3-how-are-these-classes-divided-across-countries)
   - [ ] Replace the TODO comments with your code in [scripts/country-cone-classes.py](scripts/country-cone-classes.py)
-  - [ ] build tables/country-cone-classes.md <br/>
-        `uv run scripts/country-cone-classes.py --output tables/country-cone-classes.md -O data/orgs.jsonl -C data/20260501.ppdc-ases.txt.bz2`
-  - [ ] copy the table/coungry-cone-classes.md into this document at INSERT
+  - [ ] build tables/country-cone-classes.md
+  - [ ] copy the table/country-cone-classes.md into this document at INSERT
   - [ ] Answer question 4,5, and 6
 
 ---

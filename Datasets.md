@@ -48,7 +48,9 @@ You will download CAIDA's May 2026 ASN Customer Cone (_20260501.ppdc-ases.txt.bz
 
 CAIDA provides its ASN customer cone as part of the **CAIDA AS Customer Cone (Serial-1)** dataset. Follow the link below and download the file labeled **20260501.ppdc-ases.txt.bz2** and copy it to your **data** directory.
 
-In the `ppdc-ases.txt.bz2` file, lines that start with a '#' are a comment. All other lines start with a single ASN followed by a list of ASNs in its customer cone.
+In this module, the size of an AS's customer cone is measured as the **number of ASNs** in that set.
+
+In the `ppdc-ases.txt.bz2` file, lines that start with a '#' are a comment. All other lines start with a single ASN followed by a list of ASNs in its customer cone. The cone size for a given AS is the number of space-separated tokens on its line minus 1 (the first token is the AS itself).
 
 ```
 # This is a comment

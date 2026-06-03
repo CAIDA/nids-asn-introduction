@@ -1,7 +1,7 @@
 """Classify ASNs by customer cone size and emit a markdown table.
 
 Usage:
-    uv run scripts/asn-customer-cone-classes.py --output tables/asn-customer-cone-classes.md data/20260501.ppdc-ases.txt.bz2
+    uv run scripts/asn-cone-classes.py --output tables/asn-cone-classes.md data/20260501.ppdc-ases.txt.bz2
 """
 
 from __future__ import annotations
@@ -40,8 +40,8 @@ def parse_args() -> argparse.Namespace:
         "-o",
         "--output",
         type=Path,
-        default=Path("tables/asn-customer-cone-classes.md"),
-        help="Output markdown file path (default: tables/asn-customer-cone-classes.md)",
+        default=Path("tables/asn-cone-classes.md"),
+        help="Output markdown file path (default: tables/asn-cone-classes.md)",
     )
     return parser.parse_args()
 
