@@ -1,4 +1,4 @@
-[README](Readme.md) | [Introduction](Introduction.md) | [Datasets](Datasets.md) ⬅ Tasks | [Report](Report.md)
+[README](Readme.md) | [Introduction](Introduction.md) | [Datasets](Datasets.md) | Tasks ⮕ [Report](Report.md)
 
 ## Overview
 
