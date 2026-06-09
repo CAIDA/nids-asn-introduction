@@ -76,4 +76,8 @@ CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with
 | date    | date     | 2026/04/01 <br/> 2026/04/01 | current record date                                                                                        |
 | ts      | date     | 2026/04/17 <br/> 2026/04/17 | database record timestamp                                                                                  |
 
+#### Helpful hit
+
+Files that end with the extention JSONL are [JSON Line Files](https://jsonltools.com/what-is-jsonl). After you have downloaded the [data/orgs.jsonl](data/orgs.jsonl) file, copy a single of the uncommented lines into a [JSON Formatter](https://duckduckgo.com/?q=JSON+Formatter&ia=answer). You will be able to see an example row from the dataset.
+
 [README](README.md) | [Introduction](Introduction.md) | Datasets ⮕ [Tasks](Tasks.md) | [Notebook](notebook.ipynb)
