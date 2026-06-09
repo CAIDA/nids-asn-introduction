@@ -1,4 +1,4 @@
-[README](README..md) | [Introduction](Introduction.md) | Setup ⮕ [Datasets](Datasets.md) | [Notebook](notebook.ipynb)
+[README](README.md) | [Introduction](Introduction.md) | Setup ⮕ [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Notebook](notebook.ipynb)
 
 # Setup your local environment
 
