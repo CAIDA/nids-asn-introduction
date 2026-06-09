@@ -31,7 +31,7 @@ def open_safe(filename: str | Path, encoding: str = "utf-8") -> Iterator[TextIO]
             yield f
 
 
-CLASSES: list[tuple[str, int, int]] = [
+TIERS: list[tuple[str, int, int]] = [
     ("edge",           1,     1),
     ("transit small",  2,     10),
     ("transit middle", 11,    1000),
@@ -51,7 +51,7 @@ FILTER_MAP: dict[str, str | None] = {
 
 
 def classify(size: int) -> str:
-    for label, lo, hi in CLASSES:
+    for label, lo, hi in TIERS:
         if lo <= size and (hi == -1 or size <= hi):
             return label
     return "unknown"

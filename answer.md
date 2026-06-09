@@ -33,9 +33,9 @@
 
 ## 6 AS Customer Cones
 
-### 6.2 Understanding ASN Customer Cone Classes
+### 6.2 Understanding ASN Customer Cone Tiers
 
-{{INSERT:tables/asn-customer-cone-classes.md}}
+{{INSERT:tables/asn-customer-cone-tiers.md}}
 
 **Questions:**
 
@@ -53,9 +53,9 @@
 
 ---
 
-## 7 How are these classes divided across countries
+## 7 How are these tiers divided across countries
 
-{{INSERT:tables/country-cone-classes.md}}
+{{INSERT:tables/country-cone-tiers.md}}
 
 **Questions:**
 
@@ -67,6 +67,6 @@
 
    **(your answer here)**
 
-3. Do the same countries dominate across all AS classes (edge, transit small, transit huge)? What patterns do you observe across the rows?
+3. Do the same countries dominate across all AS tiers (edge, transit small, transit huge)? What patterns do you observe across the rows?
 
    **(your answer here)**

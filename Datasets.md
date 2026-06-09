@@ -1,4 +1,4 @@
-[README](README..md) | [Introduction](Introduction.md) | Datasets ⮕ [Tasks](Tasks.md) | [Report](Report.md)
+[README](README..md) | [Introduction](Introduction.md) | Datasets ⮕ [Notebook](notebook.ipynb)
 
 # Datasets
 
@@ -44,7 +44,7 @@ This construct embeds an assumption that ASes in the customer cone for AS A pay 
 
 ### 6.1 Understanding ASN Customer Cones
 
-You will download CAIDA's May 2026 ASN Customer Cone (_20260501.ppdc-ases.txt.bz2_) file to the data directory. You will then write a script (_scripts/asn-cone-classes.py_) that will divide the ASNs into bands based on their customer cone size.
+You will download CAIDA's May 2026 ASN Customer Cone (_20260501.ppdc-ases.txt.bz2_) file to the data directory. You will then write a script (_scripts/asn-cone-tiers.py_) that will divide the ASNs into tiers based on their customer cone size.
 
 CAIDA provides its ASN customer cone as part of the **CAIDA AS Customer Cone (Serial-1)** dataset. Follow the link below and download the file labeled **20260501.ppdc-ases.txt.bz2** and copy it to your **data** directory.
 
@@ -76,4 +76,4 @@ CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with
 | date    | date     | 2026/04/01 <br/> 2026/04/01 | current record date                                                                                        |
 | ts      | date     | 2026/04/17 <br/> 2026/04/17 | database record timestamp                                                                                  |
 
-[README](README..md) | [Introduction](Introduction.md) | Datasets ⮕ [Tasks](Tasks.md) | [Report](Report.md)
+[README](README..md) | [Introduction](Introduction.md) | Datasets ⮕ [Notebook](notebook.ipynb)

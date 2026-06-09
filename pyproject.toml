@@ -2,4 +2,4 @@
 name = "nids-asn-cone"
 version = "0.1.0"
 requires-python = ">=3.11"
-dependencies = ["requests", "matplotlib", "numpy"]
+dependencies = ["requests", "matplotlib", "numpy", "jupyter", "nbgrader"]

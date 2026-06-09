@@ -1,6 +1,10 @@
-[README](README.md) | Background ⮕ [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Report](Report.md)
+[README](README.md) | Background ⮕ [Datasets](Datasets.md) | [Notebook](notebook.ipynb)
 
 # Introduction and Background
+
+### Reading
+
+- [AS Customer Cone](https://cseweb.ucsd.edu/classes/wi23/cse291-e/slides/cse291e-lecture-03b.pdf) (slides)
 
 <img width="40%" style="float:right;margin-right:2em;" src="images/asn-org.png">
 
@@ -31,4 +35,4 @@ For this assignment, you will explore the following two datasets:
 - [ASN 2 Organization](https://catalog.caida.org/dataset/as_organizations) (dataset details)
 - [Autonomous system (Internet)](<https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>) (Wikipedia)
 
-[README](README.md) | Background ⮕ [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Report](Report.md)
+[README](README.md) | Background ⮕ [Datasets](Datasets.md) | [Notebook](notebook.ipynb)
