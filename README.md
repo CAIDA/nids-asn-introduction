@@ -11,12 +11,12 @@ The goal of this assignment is to understand Autonomous Systems, how organizatio
 Start by reading **Introduction** to get the background needed to understand the assignment. **Setup** helps you set up your environment. **Datasets** explains each dataset and how to download it.
 
 - step 1 [read the introduction](Introduction.md)
-- step 3 [read dataset overviews](Datasets.md)
-- step 4 [review the tasks](Tasks.md)
-- step 5 log into NRP's JuypterHub, upload and complete the nids-asn-introduction.ipynb
+- step 2 [read dataset overviews](Datasets.md)
+- step 3 [review the tasks](Tasks.md)
+- step 4 log into NRP's JuypterHub, upload and complete the nids-asn-introduction.ipynb
   - complete each task by replacing the `# YOUR CODE HERE` sections
   - answer all six questions
-- step 6 download your working version and save to nids-asn-introduction-(username).ipynb ⬅ deliverable
+- step 5 download your working version and save to nids-asn-introduction-(username).ipynb ⬅ deliverable
 
 ### Directory Structure
 

@@ -45,7 +45,7 @@ In other words, an AS's customer cone contains itself, its customers, its custom
 
 This construct embeds an assumption that ASes in the customer cone for AS A pay AS A—either directly or indirectly—for transit. We denote the **size** of an AS's customer cone as the **total number of ASNs in its customer cone set**, providing a coarse metric of that AS's footprint in the routing system.
 
-### 6.1 Understanding ASN Customer Cones
+### Understanding ASN Customer Cones
 
 You will download CAIDA's May 2026 ASN Customer Cone (_20260501.ppdc-ases.txt.bz2_) file to the data directory. You will then complete tasks in the notebook that divide the ASNs into tiers based on their customer cone size.
 
