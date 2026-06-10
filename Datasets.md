@@ -2,6 +2,9 @@
 
 # Datasets
 
+We have mounted that the data on NRP, if you find it useful to see the data locally, here are
+instructions on how to download the data. This is totally optional.
+
 ```
 data
 ├- orgs.jsonl

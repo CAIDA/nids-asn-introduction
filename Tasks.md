@@ -2,33 +2,19 @@
 
 # Tasks
 
-Complete the tasks below in order. Tasks 3 and 4 are completed inside [nids-asn-introduction.ipynb](nids-asn-introduction.ipynb) — replace the `# YOUR CODE HERE` sections with your code and answer the questions in the markdown cells that follow.
+Complete the tasks below in order. Tasks 2 and 3 are completed inside [nids-asn-introduction.ipynb](nids-asn-introduction.ipynb) — replace the `# YOUR CODE HERE` sections with your code and answer the questions in the markdown cells that follow.
 
-## Task 0: Set Up Your Environment
+## Task 1: Get access to NRP's JuypterHub and run the notebook there.
 
-Install dependencies and verify your environment is ready. See [Setup](Setup.md) for full instructions.
+- step 1. [https://nrp.ai](https://nrp.ai/)
+- step 2. click on "Log In" in the upper right corner
+- step 3. select your organization and log in
+- step 4. Send an email to (address) with the email address you used to log into NRP.
+  - We will add that address to the namespace `caida-nids`
+- step 5. Log into NRP's JuypterHub [https://jupyterhub-west.nrp-nautilus.io/](https://jupyterhub-west.nrp-nautilus.io/)
+- Step 6. Upload nids-asn-introuction.ipynb and run it
 
-- [ ] Install uv: `curl -LsSf https://astral.sh/uv/install.sh | sh`
-- [ ] Install dependencies: `uv sync`
-
-## Task 1: Download the Datasets
-
-Download both datasets to your `data/` directory before opening the notebook. See [Datasets](Datasets.md) for details on each file.
-
-- [ ] Download the AS-to-Organization mapping: `uv run scripts/org-download.py --output data/orgs.jsonl`
-- [ ] Download the AS Customer Cone: `wget -O data/20260501.ppdc-ases.txt.bz2 https://publicdata.caida.org/datasets/as-relationships/serial-1/20260501.ppdc-ases.txt.bz2`
-
-## Task 2: Start the Notebook
-
-Launch Jupyter and open the notebook in your browser.
-
-```bash
-uv run jupyter notebook nids-asn-introduction.ipynb
-```
-
-If the browser does not open automatically, copy the URL printed in the terminal (e.g. `http://127.0.0.1:8888/...`) and paste it into your browser.
-
-## Task 3: ASN Classified by Customer Cone Size
+## Task 2: ASN Classified by Customer Cone Size
 
 Parse the AS Customer Cone file and classify each ASN by cone size into tiers (edge, transit small, transit middle, transit large, transit huge). The notebook writes the results to `tables/asn-cone-tiers.md`.
 
@@ -36,7 +22,7 @@ Parse the AS Customer Cone file and classify each ASN by cone size into tiers (e
 - [ ] Q2: How large is the maximum customer cone? What does this tell you about the most influential ASes on the Internet?
 - [ ] Q3: How do the proportions of edge, small transit, and large transit ASes compare? What does this distribution reveal about how ASes are organized hierarchically?
 
-## Task 4: ASN Tiers by Country
+## Task 3: ASN Tiers by Country
 
 Join the customer cone tiers with the AS-to-Organization mapping to count tiers per country.
 
