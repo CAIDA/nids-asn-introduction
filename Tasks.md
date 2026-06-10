@@ -9,7 +9,7 @@ Complete the tasks below in order. Tasks 2 and 3 are completed inside [nids-asn-
 - step 1. [https://nrp.ai](https://nrp.ai/)
 - step 2. click on "Log In" in the upper right corner
 - step 3. select your organization and log in
-- step 4. Send an email to (address) with the email address you used to log into NRP.
+- step 4. Send an email to [training-program-info@caida.org](mailto:training-program-info@caida.org) with the email address you used to log into NRP.
   - We will add that address to the namespace `caida-nids`
 - step 5. Log into NRP's JuypterHub [https://jupyterhub-west.nrp-nautilus.io/](https://jupyterhub-west.nrp-nautilus.io/)
 - Step 6. Upload nids-asn-introuction.ipynb and run it
