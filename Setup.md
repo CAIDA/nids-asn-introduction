@@ -1,6 +1,8 @@
-[README](README.md) | [Introduction](Introduction.md) | Setup ⮕ [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Notebook](notebook.ipynb)
+[README](README.md) | [Introduction](Introduction.md) | Setup ⮕ [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)
 
 # Setup your local environment
+
+You will be running your in [NRP's JupyterHub](.
 
 This module uses [uv](https://docs.astral.sh/uv/), a Python package and project manager that handles Python installation and dependencies for you.
 
@@ -35,7 +37,7 @@ uv sync
 ## Step 3: Launch the notebook
 
 ```bash
-uv run jupyter notebook notebook.ipynb
+uv run jupyter notebook nids-asn-introduction.ipynb
 ```
 
 This will open Jupyter in your browser. If the browser does not open automatically, copy the URL printed in the terminal (it looks like `http://127.0.0.1:8888/...`) and paste it into your browser.

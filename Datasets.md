@@ -1,4 +1,4 @@
-[README](README.md) | [Introduction](Introduction.md) | Datasets ⮕ [Tasks](Tasks.md) | [Notebook](notebook.ipynb)
+[README](README.md) | [Introduction](Introduction.md) | Datasets ⮕ [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)
 
 # Datasets
 
@@ -44,7 +44,7 @@ This construct embeds an assumption that ASes in the customer cone for AS A pay 
 
 ### 6.1 Understanding ASN Customer Cones
 
-You will download CAIDA's May 2026 ASN Customer Cone (_20260501.ppdc-ases.txt.bz2_) file to the data directory. You will then write a script (_scripts/asn-cone-tiers.py_) that will divide the ASNs into tiers based on their customer cone size.
+You will download CAIDA's May 2026 ASN Customer Cone (_20260501.ppdc-ases.txt.bz2_) file to the data directory. You will then complete tasks in the notebook that divide the ASNs into tiers based on their customer cone size.
 
 CAIDA provides its ASN customer cone as part of the **CAIDA AS Customer Cone (Serial-1)** dataset. Follow the link below and download the file labeled **20260501.ppdc-ases.txt.bz2** and copy it to your **data** directory.
 
@@ -80,4 +80,4 @@ CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with
 
 Files that end with the extention JSONL are [JSON Line Files](https://jsonltools.com/what-is-jsonl). After you have downloaded the [data/orgs.jsonl](data/orgs.jsonl) file, copy a single of the uncommented lines into a [JSON Formatter](https://duckduckgo.com/?q=JSON+Formatter&ia=answer). You will be able to see an example row from the dataset.
 
-[README](README.md) | [Introduction](Introduction.md) | Datasets ⮕ [Tasks](Tasks.md) | [Notebook](notebook.ipynb)
+[README](README.md) | [Introduction](Introduction.md) | Datasets ⮕ [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)
