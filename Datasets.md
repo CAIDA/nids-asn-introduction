@@ -2,34 +2,6 @@
 
 # Datasets
 
-We have mounted that the data on NRP, if you find it useful to see the data locally, here are
-instructions on how to download the data. This is totally optional.
-
-```
-data
-├- orgs.jsonl
-└- 20260501.ppdc-ases.txt.bz2
-```
-
-### step 1: Download CAIDA AS to Organization Mapping
-
-We have provided `scripts/org-download.py ` to download the dataset from CAIDA's as2org API.
-It will place the data in your data directory as `data/orgs.jsonl`.
-
-- API: https://api.data.caida.org/as2org/v1/orgs/
-- script: [scripts/org-download.py ](scripts/org-download.py) will download the full set of organizations
-
-**command:** `uv run scripts/org-download.py  --output data/orgs.jsonl`
-
-### step 2: Download CAIDA AS Customer Cone
-
-Manually download the May 1, 2026 AS Customer Cone file.
-
-- [20260501.ppdc-ases.txt.bz2](https://publicdata.caida.org/datasets/as-relationships/serial-1/20260501.ppdc-ases.txt.bz2)
-  : Per-AS provider-peer-customer (PPDC) cones: for each AS, the set of all ASes reachable via customer links.
-
-**command**: `wget -O data/20260501.ppdc-ases.txt.bz2 https://publicdata.caida.org/datasets/as-relationships/serial-1/20260501.ppdc-ases.txt.bz2`
-
 ## AS Customer Cones
 
 <img src="images/customer-cones.png">
