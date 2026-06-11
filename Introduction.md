@@ -1,4 +1,4 @@
-[README](README.md) | Background ⮕ [Datasets](Datasets.md) | [Notebook](nids-asn-introduction.ipynb)
+[README](README.md) | Background ⮕ | [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)
 
 # Introduction and Background
 
@@ -35,4 +35,4 @@ For this assignment, you will explore the following two datasets:
 - [ASN 2 Organization](https://catalog.caida.org/dataset/as_organizations) (dataset details)
 - [Autonomous system (Internet)](<https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>) (Wikipedia)
 
-[README](README.md) | Background ⮕ [Datasets](Datasets.md) | [Notebook](nids-asn-introduction.ipynb)
+[README](README.md) | Background ⮕ | [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)

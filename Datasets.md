@@ -37,7 +37,7 @@ In the `ppdc-ases.txt.bz2` file, lines that start with a '#' are a comment. All 
 
 ## CAIDA AS to Organization Mapping Dataset
 
-CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with ASNs and the set of ASNs assigned to those organizations. CAIDA infers these mappings based on [Regional Internet Registry](https://en.wikipedia.org/wiki/Regional_Internet_registry) [WHOIS records](https://en.wikipedia.org/wiki/WHOIS). CAIDA provides this data through an API that requires pagination to retrieve the full dataset. The provided script, [scripts/org-download.py ](scripts/org-download.py), handles this process automatically and stores the results in **data/orgs.jsonl**.
+CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with ASNs and the set of ASNs assigned to those organizations. CAIDA infers these mappings based on [Regional Internet Registry](https://en.wikipedia.org/wiki/Regional_Internet_registry) [WHOIS records](https://en.wikipedia.org/wiki/WHOIS). The notebook downloads this file automatically and stores the results in **data/as2org.jsonl**.
 
 | name    | type     | values                      | description                                                                                                |
 | ------- | -------- | --------------------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -53,6 +53,6 @@ CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with
 
 #### Helpful hit
 
-Files that end with the extention JSONL are [JSON Line Files](https://jsonltools.com/what-is-jsonl). After you have downloaded the [data/orgs.jsonl](data/orgs.jsonl) file, copy a single of the uncommented lines into a [JSON Formatter](https://duckduckgo.com/?q=JSON+Formatter&ia=answer). You will be able to see an example row from the dataset.
+Files that end with the extention JSONL are [JSON Line Files](https://jsonltools.com/what-is-jsonl). After the notebook has downloaded the [data/as2org.jsonl](data/as2org.jsonl) file, copy a single of the uncommented lines into a [JSON Formatter](https://duckduckgo.com/?q=JSON+Formatter&ia=answer). You will be able to see an example row from the dataset.
 
 [README](README.md) | [Introduction](Introduction.md) | Datasets ⮕ [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)

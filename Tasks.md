@@ -7,12 +7,25 @@ Complete the tasks below in order. Tasks 2 and 3 are completed inside [nids-asn-
 ## Task 1: Get access to NRP's JuypterHub and run the notebook there.
 
 - step 1. [https://nrp.ai](https://nrp.ai/)
+  - for more Details [How To Access NRP](https://www.caida.org/projects/nids/how-to/access-nrp/)
 - step 2. click on "Log In" in the upper right corner
 - step 3. select your organization and log in
 - step 4. Send an email to [training-program-info@caida.org](mailto:training-program-info@caida.org) with the email address you used to log into NRP.
   - We will add that address to the namespace `caida-nids`
 - step 5. Log into NRP's JuypterHub [https://jupyterhub-west.nrp-nautilus.io/](https://jupyterhub-west.nrp-nautilus.io/)
-- Step 6. Upload nids-asn-introuction.ipynb and run it
+
+  | Field        | Value       |
+  | ------------ | ----------- |
+  | Region       | Any         |
+  | GPUs         | 0           |
+  | Cores        | 1           |
+  | RAM, GB      | 2           |
+  | FPGAs        | 0           |
+  | GPU type     | Any general |
+  | Image        | **Scipy**   |
+  | Architecture | amd64       |
+
+- Step 6. Upload nids-asn-introduction.ipynb and run it
 
 ## Task 2: ASN Classified by Customer Cone Size
 
