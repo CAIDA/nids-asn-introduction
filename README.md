@@ -13,13 +13,12 @@ Start by reading **Introduction** to get the background needed to understand the
 - step 1 [read the introduction](Introduction.md)
 - step 2 [read dataset overviews](Datasets.md)
 - step 3 [review the tasks](Tasks.md)
-- step 4 log into NRP's JuypterHub, upload and complete the nids-asn-introduction.
-  ipynb
-  - Details intructions to access nrp: [How to access NRP](https://www.caida.org/projects/nids/how-to/access-nrp/)
+- step 4 log into NRP's JupyterHub, upload and complete the nids-asn-introduction.ipynb
+  - Detailed instructions to access NRP: [How to access NRP](https://www.caida.org/projects/nids/how-to/access-nrp/)
   - complete each task by replacing the `# YOUR CODE HERE` sections
   - answer all six questions
-- step 5 download your working notebookw and replace ⬅ deliverable
-- step 6 commit and push to github
+- step 5 download your working notebook and replace ⬅ deliverable
+- step 6 commit and push to GitHub
 
 ### Directory Structure
 

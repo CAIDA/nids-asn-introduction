@@ -1,18 +1,18 @@
-[README](README.md) | [Introduction](Introduction.md) | [Datasets](Datasets.md) | Tasks ⮕ [Notebook](nids-asn-introduction.ipynb)
+[README](README.md) | [Introduction](Introduction.md) | [Datasets](Datasets.md) | Tasks ⮕ | [Notebook](nids-asn-introduction.ipynb)
 
 # Tasks
 
 Complete the tasks below in order. Tasks 2 and 3 are completed inside [nids-asn-introduction.ipynb](nids-asn-introduction.ipynb) — replace the `# YOUR CODE HERE` sections with your code and answer the questions in the markdown cells that follow.
 
-## Task 1: Get access to NRP's JuypterHub and run the notebook there.
+## Task 1: Get access to NRP's JupyterHub and run the notebook there.
 
 - step 1. [https://nrp.ai](https://nrp.ai/)
-  - for more Details [How To Access NRP](https://www.caida.org/projects/nids/how-to/access-nrp/)
+  - for more details [How To Access NRP](https://www.caida.org/projects/nids/how-to/access-nrp/)
 - step 2. click on "Log In" in the upper right corner
 - step 3. select your organization and log in
 - step 4. Send an email to [training-program-info@caida.org](mailto:training-program-info@caida.org) with the email address you used to log into NRP.
   - We will add that address to the namespace `caida-nids`
-- step 5. Log into NRP's JuypterHub [https://jupyterhub-west.nrp-nautilus.io/](https://jupyterhub-west.nrp-nautilus.io/)
+- step 5. Log into NRP's JupyterHub [https://jupyterhub-west.nrp-nautilus.io/](https://jupyterhub-west.nrp-nautilus.io/)
 
   | Field        | Value       |
   | ------------ | ----------- |
@@ -25,7 +25,7 @@ Complete the tasks below in order. Tasks 2 and 3 are completed inside [nids-asn-
   | Image        | **Scipy**   |
   | Architecture | amd64       |
 
-- Step 6. Upload nids-asn-introduction.ipynb and run it
+- step 6. Upload nids-asn-introduction.ipynb and run it
 
 ## Task 2: ASN Classified by Customer Cone Size
 
@@ -43,4 +43,4 @@ Join the customer cone tiers with the AS-to-Organization mapping to count tiers 
 - [ ] Q5: What proportion of all ASNs fall in the "other" category? What does this suggest about the geographic distribution of the global Internet?
 - [ ] Q6: Do the same countries dominate across all AS tiers (edge, transit small, transit huge)? What patterns do you observe across the rows?
 
-[README](README.md) | [Introduction](Introduction.md) | [Datasets](Datasets.md) | Tasks ⮕ [Notebook](nids-asn-introduction.ipynb)
+[README](README.md) | [Introduction](Introduction.md) | [Datasets](Datasets.md) | Tasks ⮕ | [Notebook](nids-asn-introduction.ipynb)
