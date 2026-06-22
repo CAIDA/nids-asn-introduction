@@ -1,6 +1,9 @@
 README ⮕ | [Introduction](Introduction.md) | [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)
 
 ### [Network Infrastructure Data Science (NIDS) Module]
+
+---
+
 # How the Internet assigns and uses Autonomous Systems (ASes)
 
 ## Learning Objectives
