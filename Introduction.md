@@ -6,6 +6,10 @@
 
 - [AS Customer Cone](https://cseweb.ucsd.edu/classes/wi23/cse291-e/slides/cse291e-lecture-03b.pdf) (slides)
 
+### Prerequisite NIDS Assignments
+
+- None — this is the first assignment in the sequence and introduces foundational AS/customer-cone concepts used by later modules.
+
 <img width="40%" style="float:right;margin-right:2em;" src="images/asn-org.png">
 
 An Autonomous System (or AS) is an independently operated network on the Internet — a collection of IP prefixes managed by a single administrative entity under a common routing policy. Each AS is identified by a globally unique **Autonomous System Number (ASN)**. Regional Internet Registries (RIRs), set up in the 1990s, allocate these numbers to organizations that operate network infrastructure. One organization may operate multiple ASNs, for example, to operate separate networks in different geographic regions or service tiers.
