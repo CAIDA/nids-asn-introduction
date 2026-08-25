@@ -1,4 +1,4 @@
-[README](README.md) | Background ⮕ | [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)
+[README](README.md) | Introduction ⮕ | [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)
 
 # Introduction and Background
 
@@ -8,7 +8,7 @@
 
 ### Prerequisite NIDS Assignments
 
-- None — this is the first assignment in the sequence and introduces foundational AS/customer-cone concepts used by later modules.
+- None — this is the first assignment in the sequence and introduces foundational AS/customer-cone concepts used by later assignments.
 
 <img width="40%" style="float:right;margin-right:2em;" src="images/asn-org.png">
 
@@ -23,7 +23,7 @@ You can think of a customer cone as a metric that defines a node's reach or sphe
 
 This assignment will introduce you to these datasets (CAIDA's _AS to Organizations_ and _customer cone_) and demonstrate how analysts use them. For example, we can use the size of an AS's customer cone as a metric of that organization's size or importance. We can also arrange the ASes as nodes in a graph reflecting customer-provider relationships. At the bottom of this hierarchy are **stub** or **edge** organizations that pay someone else for all of their Internet access needs. Each stub ASN is a **customer** of its transit **provider's** ASN. This relationship is called a **Provider-Customer (p2c)** relationship, with the customer below its provider in the hierarchy. Each of these transit providers in turn may have a **Provider-Customer** relationship with their own set of transit providers. This chain of **Provider-Customer** links is the foundation of the ASN Customer Cone. The ASN Customer Cone includes the ASN itself and the union of ASNs in its customers' customer cones — that is, the number of ASNs reachable through the target ASN's customers.
 
-Some networks exchange traffic for free in a **Peer-to-Peer** relationship. These links are not used in the calculation of the customer cone. We will go into these in a future module.
+Some networks exchange traffic for free in a **Peer-to-Peer** relationship. These links are not used in the calculation of the customer cone. We will go into these in a future assignment.
 
 For this assignment, you will explore the following two datasets:
 
@@ -34,9 +34,8 @@ For this assignment, you will explore the following two datasets:
 
 - [Lecture: AS Relationships and Customer Cones](https://cseweb.ucsd.edu/classes/wi23/cse291-e/slides/cse291e-lecture-03.pdf) (slides)
 - [Autonomous Systems Topology](https://www.caida.org/catalog/media/2016_as_intro_topology_wind/as_intro_topology_wind.pdf) (slides)
-- [AS Relationships, Customer Cones, and Validation
-  ](https://catalog.caida.org/paper/2013_asrank) (customer cone paper)
+- [AS Relationships, Customer Cones, and Validation](https://catalog.caida.org/paper/2013_asrank) (customer cone paper)
 - [ASN 2 Organization](https://catalog.caida.org/dataset/as_organizations) (dataset details)
 - [Autonomous system (Internet)](<https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>) (Wikipedia)
 
-[README](README.md) | Background ⮕ | [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)
+[README](README.md) | Introduction ⮕ | [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)

@@ -1,6 +1,6 @@
 README ⮕ | [Introduction](Introduction.md) | [Datasets](Datasets.md) | [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)
 
-### [Network Infrastructure Data Science (NIDS) Module]
+### [Network Infrastructure Data Science (NIDS) Assignment](https://www.caida.org/projects/nids/)
 
 ---
 

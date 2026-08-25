@@ -19,11 +19,11 @@ This construct embeds an assumption that ASes in the customer cone for AS A pay 
 
 ### Understanding ASN Customer Cones
 
-You will download CAIDA's May 2026 ASN Customer Cone (_20260501.ppdc-ases.txt.bz2_) file to the data directory. You will then complete tasks in the notebook that divide the ASNs into tiers based on their customer cone size.
+The notebook downloads CAIDA's May 2026 ASN Customer Cone file (_20260501.ppdc-ases.txt.bz2_) automatically and stores it in **data/20260501.ppdc-ases.txt.bz2**. You will then complete tasks in the notebook that divide the ASNs into tiers based on their customer cone size.
 
-CAIDA provides its ASN customer cone as part of the **CAIDA AS Customer Cone (Serial-1)** dataset. Follow the link below and download the file labeled **20260501.ppdc-ases.txt.bz2** and copy it to your **data** directory.
+CAIDA provides its ASN customer cone as part of the [CAIDA AS Customer Cone (Serial-1)](https://catalog.caida.org/dataset/as_relationships_serial_1) dataset. If you are working outside NRP, you can download the same file directly from [publicdata.caida.org](https://publicdata.caida.org/datasets/as-relationships/serial-1/20260501.ppdc-ases.txt.bz2) and copy it to your **data** directory.
 
-In this module, the size of an AS's customer cone is measured as the **number of ASNs** in that set.
+In this assignment, the size of an AS's customer cone is measured as the **number of ASNs** in that set.
 
 In the `ppdc-ases.txt.bz2` file, lines that start with a '#' are comments. All other lines start with a single ASN followed by a list of ASNs in its customer cone. The cone size for a given AS is the number of space-separated tokens on its line minus 1 (the first token is the AS itself).
 
@@ -53,6 +53,6 @@ CAIDA's AS-to-Organization-Mapping Dataset provides a list of organizations with
 
 #### Helpful hint
 
-Files that end with the extension JSONL are [JSON Line Files](https://jsonltools.com/what-is-jsonl). After the notebook has downloaded the [data/as2org.jsonl](data/as2org.jsonl) file, copy one of the uncommented lines into a [JSON Formatter](https://duckduckgo.com/?q=JSON+Formatter&ia=answer). You will be able to see an example row from the dataset.
+Files that end with the extension JSONL are [JSON Line Files](https://jsonltools.com/what-is-jsonl). After the notebook has downloaded the **data/as2org.jsonl** file, copy one of the uncommented lines into a [JSON Formatter](https://jsonformatter.org/). You will be able to see an example row from the dataset.
 
 [README](README.md) | [Introduction](Introduction.md) | Datasets ⮕ | [Tasks](Tasks.md) | [Notebook](nids-asn-introduction.ipynb)
