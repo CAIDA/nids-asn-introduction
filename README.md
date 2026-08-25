@@ -10,6 +10,10 @@ README ⮕ | [Introduction](Introduction.md) | [Datasets](Datasets.md) | [Tasks]
 
 The goal of this assignment is to understand Autonomous Systems, how organizations use them, and the concept of an AS's _customer cone_ by processing data sets that describe how ASNs are globally distributed across networks and countries. This assignment is a building block for studying the macroscopic topology of the Internet.
 
+## Slides
+
+- [ETP week 01 ASN Introduction lecture](slides/ETP-Week-01-ASN.pptx)
+
 ## Overview
 
 Start by reading **Introduction** to get the background needed to understand the assignment. **Datasets** explains each dataset and how to download it.
