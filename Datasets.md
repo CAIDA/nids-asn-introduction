@@ -21,7 +21,7 @@ This construct embeds an assumption that ASes in the customer cone for AS A pay 
 
 The notebook downloads CAIDA's May 2026 ASN Customer Cone file (_20260501.ppdc-ases.txt.bz2_) automatically and stores it in **data/20260501.ppdc-ases.txt.bz2**. You will then complete tasks in the notebook that divide the ASNs into tiers based on their customer cone size.
 
-CAIDA provides its ASN customer cone as part of the [CAIDA AS Customer Cone (Serial-1)](https://catalog.caida.org/dataset/as_relationships_serial_1) dataset. If you are working outside NRP, you can download the same file directly from [publicdata.caida.org](https://publicdata.caida.org/datasets/as-relationships/serial-1/20260501.ppdc-ases.txt.bz2) and copy it to your **data** directory.
+CAIDA provides its ASN customer cone as part of the [CAIDA AS Customer Cone (Serial-1)](https://catalog.caida.org/dataset/as_relationships_serial_1) dataset. Off NRP the same file comes from [publicdata.caida.org](https://publicdata.caida.org/datasets/as-relationships/serial-1/20260501.ppdc-ases.txt.bz2) — [`nids-setup`](https://github.com/CAIDA/nids-setup#quickstart) puts it in your **data** directory for you, or you can download it there yourself.
 
 In this assignment, the size of an AS's customer cone is measured as the **number of ASNs** in that set.
 

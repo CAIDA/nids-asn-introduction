@@ -4,7 +4,16 @@
 
 Complete the tasks below in order. Tasks 2 and 3 are completed inside [nids-asn-introduction.ipynb](nids-asn-introduction.ipynb) — replace the `# YOUR CODE HERE` sections with your code and answer the questions in the markdown cells that follow.
 
-## Task 1: Get access to NRP's JupyterHub and run the notebook there.
+## Task 1: Set up and run the notebook
+
+Not graded — Tasks 2 and 3 are. Both ways run the same notebook; use whichever you have access to.
+
+**On your own machine.** Follow the
+[nids-setup quickstart](https://github.com/CAIDA/nids-setup#quickstart): one command clones this
+module, builds a Python environment for it, and downloads its data. Then open
+`nids-asn-introduction.ipynb`.
+
+**On NRP's JupyterHub.** You need an NRP identity and access to the `caida-nids` namespace:
 
 - step 1. [https://nrp.ai](https://nrp.ai/)
   - for more details [How To Access NRP](https://www.caida.org/projects/nids/how-to/access-nrp/)
