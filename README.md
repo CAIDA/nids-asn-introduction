@@ -22,7 +22,7 @@ Start by reading **Introduction** to get the background needed to understand the
 - step 2 [read dataset overviews](Datasets.md)
 - step 3 [review the tasks](Tasks.md)
 - step 4 set up and complete the nids-asn-introduction.ipynb — the notebook is the same either way
-  - on your own machine: follow the [nids-setup quickstart](https://github.com/CAIDA/nids-setup#quickstart), which clones this module, builds a Python environment, and stages its data
+  - on your own machine: follow the [nids-setup quickstart](https://github.com/CAIDA/nids-setup#running-asn-and-bgp-on-your-own-machine), which clones this module, builds a Python environment, and stages its data
   - on NRP's JupyterHub: [How to access NRP](https://www.caida.org/projects/nids/how-to/access-nrp/), then upload the notebook and run it
   - complete each task by replacing the `# YOUR CODE HERE` sections
   - answer all six questions

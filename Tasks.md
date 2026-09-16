@@ -9,7 +9,7 @@ Complete the tasks below in order. Tasks 2 and 3 are completed inside [nids-asn-
 Not graded — Tasks 2 and 3 are. Both ways run the same notebook; use whichever you have access to.
 
 **On your own machine.** Follow the
-[nids-setup quickstart](https://github.com/CAIDA/nids-setup#quickstart): one command clones this
+[nids-setup quickstart](https://github.com/CAIDA/nids-setup#running-asn-and-bgp-on-your-own-machine): one command clones this
 module, builds a Python environment for it, and downloads its data. Then open
 `nids-asn-introduction.ipynb`.
 
