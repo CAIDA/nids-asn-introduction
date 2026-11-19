@@ -5,6 +5,7 @@ README ⮕ | [Introduction](Introduction.md) | [Datasets](Datasets.md) | [Tasks]
 ---
 
 # How the Internet assigns and uses Autonomous Systems (ASes)
+**author**: Bradley Huffaker, Nick Nerrel, 
 
 ## Learning Objectives
 
